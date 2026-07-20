@@ -206,91 +206,79 @@ document.addEventListener('DOMContentLoaded', () => {
   // Photo Data Map (All 43 Photos supplied by the user)
   // Mapping categories: lobby (대기실/서가), room (상담/치료실), sand (모래놀이), seminar (세미나실)
   //
-  // NOTE: the real KakaoTalk export filenames do NOT share one timestamp per block —
-  // each burst of a few photos has its own timestamp. These two maps record the actual
-  // timestamp suffix for every existing file (verified against the restored 사진/ folder);
-  // block 1 has no "019" (KakaoTalk never exported that number), so it is skipped below.
-  const block1Timestamps = {
-    1: '47', 2: '47', 3: '47', 4: '47', 5: '47',
-    6: '48', 7: '48', 8: '48', 9: '48',
-    10: '49', 11: '49', 12: '49', 13: '49', 14: '49', 15: '49',
-    16: '50', 17: '50', 18: '50',
-    20: '51', 21: '51', 22: '51', 23: '51',
-    24: '52', 25: '52'
-  };
-  const block2Timestamps = {
-    1: '06', 2: '06', 3: '06',
-    4: '07', 5: '07', 6: '07',
-    7: '08', 8: '08', 9: '08', 10: '08', 11: '08',
-    12: '09', 13: '09', 14: '09', 15: '09', 16: '09',
-    17: '10', 18: '10', 19: '10'
-  };
+  // Every entry below was assigned by opening the actual restored JPEG and reading what is
+  // in the frame — not inferred from filename order. cat/title are per-photo, not per-block.
+  // A handful of photos were genuinely ambiguous against this 4-category filter (multi-purpose
+  // play rooms that also hold a small sand tray, decorative still-life shots with no visible
+  // room context, and one exterior signage photo) and were placed in the closest-fitting
+  // category; that judgment call is logged in the worker completion report, not in these
+  // user-facing captions.
+  const block1Photos = [
+    { num: '001', ts: '47', cat: 'lobby', title: '센터 입구 – 원목 여닫이문과 화분이 있는 진입로' },
+    { num: '002', ts: '47', cat: 'lobby', title: '입구 문 손잡이와 잠금장치 클로즈업' },
+    { num: '003', ts: '47', cat: 'lobby', title: "입구 벽면 '도담마인드케어' 명패 조명 디테일" },
+    { num: '004', ts: '47', cat: 'lobby', title: '명패가 보이는 진입 복도, 화분과 함께' },
+    { num: '005', ts: '47', cat: 'room', title: '아동 놀이치료실 – 장난감 자동차·보드게임 선반과 작은 모래상자' },
+    { num: '006', ts: '48', cat: 'room', title: '아동 놀이치료실 – 보드게임과 인형 선반' },
+    { num: '007', ts: '48', cat: 'room', title: '아동 놀이치료실 – 이젤과 미니 주방놀이 세트' },
+    { num: '008', ts: '48', cat: 'room', title: '아동 놀이치료실 전경 – 다양한 놀이 교구' },
+    { num: '009', ts: '48', cat: 'room', title: '아동 놀이치료실 – 소품 선반 디테일' },
+    { num: '010', ts: '49', cat: 'sand', title: '모래놀이치료실 – 벽면 가득한 피규어 컬렉션과 모래상자' },
+    { num: '011', ts: '49', cat: 'sand', title: '모래놀이치료실 – 피규어 선반 전경' },
+    { num: '012', ts: '49', cat: 'sand', title: '모래놀이치료실 – 인물·동물 피규어 진열' },
+    { num: '013', ts: '49', cat: 'sand', title: '모래놀이치료실 – 모래상자와 의자' },
+    { num: '014', ts: '49', cat: 'sand', title: '모래놀이치료실 – 선반 디테일 확대' },
+    { num: '015', ts: '49', cat: 'seminar', title: '세미나실(독서모임 공간) – 서가와 원탁, TV' },
+    { num: '016', ts: '50', cat: 'lobby', title: '복도 전경 – 진입로 방향' },
+    { num: '017', ts: '50', cat: 'lobby', title: '복도 전경 – 진입로 벽면' },
+    { num: '018', ts: '50', cat: 'lobby', title: '내부 복도 – 액자와 공용 테이블이 보이는 통로' },
+    { num: '020', ts: '51', cat: 'lobby', title: '입구 유리문 클로즈업 – 바깥 풍경' },
+    { num: '021', ts: '51', cat: 'lobby', title: '리셉션 데스크 – 벽시계와 커튼이 보이는 대기공간' },
+    { num: '022', ts: '51', cat: 'lobby', title: '리셉션 옆 세면대·정수기 코너' },
+    { num: '023', ts: '51', cat: 'lobby', title: '세면대 코너 – 다른 각도' },
+    { num: '024', ts: '52', cat: 'seminar', title: '세미나실(독서모임방) – 서가와 원탁, 화분' },
+    { num: '025', ts: '52', cat: 'seminar', title: '세미나실 – 서가 벽면 전경' }
+  ];
+
+  const block2Photos = [
+    { num: '001', ts: '06', cat: 'seminar', title: '다목적 활동실(독서모임·그룹활동) – TV, 기타, 서가, 테이블' },
+    { num: '002', ts: '06', cat: 'lobby', title: '리셉션 데스크 – 정수기·세면대 코너 (다른 각도)' },
+    { num: '003', ts: '06', cat: 'seminar', title: '다목적 활동실 – TV와 마샬 스피커, 서가' },
+    { num: '004', ts: '07', cat: 'seminar', title: '다목적 활동실 – 테이블과 의자 배치' },
+    { num: '005', ts: '07', cat: 'room', title: '아동 놀이치료실 – 벽돌블록·다트·양궁 교구 선반' },
+    { num: '006', ts: '07', cat: 'sand', title: '모래놀이치료실 – 피규어 선반과 모래상자 전경' },
+    { num: '007', ts: '08', cat: 'seminar', title: '다목적 활동실 – 서가와 식탁 테이블' },
+    { num: '008', ts: '08', cat: 'seminar', title: '다목적 활동실 – TV와 창가 좌석' },
+    { num: '009', ts: '08', cat: 'seminar', title: '다목적 활동실 서가 – 아동 도서 진열' },
+    { num: '010', ts: '08', cat: 'seminar', title: '창가 데이지 화분 정물' },
+    { num: '011', ts: '08', cat: 'seminar', title: '다목적 활동실 – 테이블과 서가 전경' },
+    { num: '012', ts: '09', cat: 'seminar', title: '창가 선반 위 화분 3개' },
+    { num: '013', ts: '09', cat: 'sand', title: '모래놀이치료실 – 피규어 선반과 모래상자 (다른 각도)' },
+    { num: '014', ts: '09', cat: 'seminar', title: '다목적 활동실 서가 – 그림책 진열 클로즈업' },
+    { num: '015', ts: '09', cat: 'seminar', title: '창가 데이지 화분 정물 (다른 각도)' },
+    { num: '016', ts: '09', cat: 'seminar', title: '다목적 활동실 – TV와 서가 전경' },
+    { num: '017', ts: '10', cat: 'seminar', title: "'Happy you' 화분 바구니 정물" },
+    { num: '018', ts: '10', cat: 'room', title: '개인 상담실 – 안락의자와 스탠드 조명이 있는 아늑한 코너' },
+    { num: '019', ts: '10', cat: 'lobby', title: '건물 외부 간판 – 도담마인드케어 심리상담센터' }
+  ];
 
   const photos = [];
 
-  // Fill first block (001 ~ 025, no 019)
-  for (let i = 1; i <= 25; i++) {
-    if (i === 19) continue; // this file does not exist in the export
-    const num = String(i).padStart(3, '0');
-    let cat = 'room'; // default
-    let caption = `상담실 내부 공간`;
-
-    if (i === 1 || i === 2 || i === 8 || i === 12 || i === 14) {
-      cat = 'lobby';
-      caption = '대기실 전경 및 라왕나무 데스크';
-    } else if (i === 3 || i === 7 || i === 15 || i === 20) {
-      cat = 'lobby';
-      caption = '책방 분위기의 서가 공간';
-    } else if (i === 4 || i === 9 || i === 13 || i === 18) {
-      cat = 'sand';
-      caption = '따뜻하고 안전한 모래놀이치료실';
-    } else if (i === 5 || i === 10 || i === 22 || i === 25) {
-      cat = 'seminar';
-      caption = '소모임 및 집단 상담 세미나실';
-    } else if (i === 6 || i === 11 || i === 16 || i === 21) {
-      cat = 'room';
-      caption = '아늑한 성인/부부 상담 공간';
-    } else {
-      cat = 'room';
-      caption = '아늑한 개인 상담 치료실';
-    }
-
+  block1Photos.forEach(p => {
     photos.push({
-      src: `./사진/KakaoTalk_Photo_2026-06-11-00-15-${block1Timestamps[i]} ${num}.jpeg`,
-      cat: cat,
-      title: caption
+      src: `./사진/KakaoTalk_Photo_2026-06-11-00-15-${p.ts} ${p.num}.jpeg`,
+      cat: p.cat,
+      title: p.title
     });
-  }
+  });
 
-  // Fill second block (001 ~ 019)
-  for (let i = 1; i <= 19; i++) {
-    const num = String(i).padStart(3, '0');
-    let cat = 'room';
-    let caption = `아늑한 상담 공간`;
-
-    if (i === 1 || i === 5 || i === 9 || i === 14) {
-      cat = 'lobby';
-      caption = '대기실 및 따뜻한 인테리어 디테일';
-    } else if (i === 2 || i === 6 || i === 10 || i === 15) {
-      cat = 'lobby';
-      caption = '편안하게 머물 수 있는 책장 서가';
-    } else if (i === 3 || i === 7 || i === 11 || i === 16) {
-      cat = 'sand';
-      caption = '모래놀이치료실 피규어 장식';
-    } else if (i === 4 || i === 8 || i === 12 || i === 17) {
-      cat = 'seminar';
-      caption = '소규모 세미나 강의실 일부';
-    } else {
-      cat = 'room';
-      caption = '아늑하고 정온한 상담치료실';
-    }
-
+  block2Photos.forEach(p => {
     photos.push({
-      src: `./사진/KakaoTalk_Photo_2026-06-11-00-16-${block2Timestamps[i]} ${num}.jpeg`,
-      cat: cat,
-      title: caption
+      src: `./사진/KakaoTalk_Photo_2026-06-11-00-16-${p.ts} ${p.num}.jpeg`,
+      cat: p.cat,
+      title: p.title
     });
-  }
+  });
 
   // Filtered array keeping track of active items in view
   let activePhotos = [...photos];
