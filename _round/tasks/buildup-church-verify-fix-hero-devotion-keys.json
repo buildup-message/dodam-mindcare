@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-verify-fix-hero-devotion-keys",
+ "title": "4개 주차 히어로 텍스트 오류 수정분 검증·push",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T03:29:48+0900",
+ "updated_at": "2026-07-21T03:30:36+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-fix-hero-devotion-keys/evidence.md commit 6db7b3f pushed to https://github.com/buildup-message/buildup-church/commit/6db7b3f",
+  "at": "2026-07-21T03:30:36+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-fix-hero-devotion-keys/evidence.md",
+    "size": 2289,
+    "mtime": 1784572229.662,
+    "sha256_8": "51ab8752",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

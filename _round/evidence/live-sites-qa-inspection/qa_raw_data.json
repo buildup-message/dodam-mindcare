@@ -1,0 +1,50 @@
+{
+  "dodam_mindcare": {
+    "url": "https://buildup-message.github.io/dodam-mindcare/",
+    "http_status": 500,
+    "meta_viewport": null,
+    "assets": [],
+    "photos": [],
+    "counselors": {
+      "최지혜": false,
+      "손선재": false,
+      "황을호": false,
+      "이평순": false,
+      "최윤정": false
+    },
+    "reviews_notice": false,
+    "issues": [
+      "HTML: meta viewport 태그 누락",
+      "Counselor Profile: '최지혜' not found in live HTML/JS",
+      "Counselor Profile: '손선재' not found in live HTML/JS",
+      "Counselor Profile: '황을호' not found in live HTML/JS",
+      "Counselor Profile: '이평순' not found in live HTML/JS",
+      "Counselor Profile: '최윤정' not found in live HTML/JS",
+      "Reviews: Notice card ('실제 내담자 후기는 동의를 받는 대로...') missing"
+    ],
+    "photos_summary": {
+      "total_expected": 43,
+      "total_found_local": 0,
+      "total_http_200_live": 0,
+      "failed": []
+    }
+  },
+  "buildup_church": {
+    "url": "https://buildup-message.github.io/buildup-church/",
+    "http_status": 500,
+    "meta_viewport": null,
+    "assets": [],
+    "address_check": {
+      "has_geomdan": false,
+      "has_seogu": false
+    },
+    "devotions_check": {
+      "has_devotion_section": false
+    },
+    "issues": [
+      "HTML: meta viewport 태그 누락",
+      "Address: '검단구' 텍스트 미발견",
+      "Devotions: 주간묵상/설교 섹션 미발견"
+    ]
+  }
+}

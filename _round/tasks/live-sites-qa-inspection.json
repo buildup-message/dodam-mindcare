@@ -1,0 +1,27 @@
+{
+ "id": "live-sites-qa-inspection",
+ "title": "두 라이브 사이트(buildup-church, dodam-mindcare) QA 점검",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-20T16:28:54+0900",
+ "updated_at": "2026-07-20T16:30:09+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/live-sites-qa-inspection/qa_report.md 43/43 photos 200, 5 counselors verified, buildup-church 404 font issue identified",
+  "at": "2026-07-20T16:30:09+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/live-sites-qa-inspection/qa_report.md",
+    "size": 5515,
+    "mtime": 1784532600.764,
+    "sha256_8": "1a3d2843",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

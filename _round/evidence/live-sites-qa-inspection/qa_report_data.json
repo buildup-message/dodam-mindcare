@@ -1,0 +1,139 @@
+{
+  "dodam_mindcare": {
+    "url": "https://buildup-message.github.io/dodam-mindcare/",
+    "http_status": 200,
+    "meta_viewport": "width=device-width, initial-scale=1.0",
+    "assets": [
+      {
+        "type": "script",
+        "url": "https://buildup-message.github.io/dodam-mindcare/js/main.js",
+        "status": 200,
+        "bytes": 17486
+      },
+      {
+        "type": "css",
+        "url": "https://buildup-message.github.io/dodam-mindcare/css/style.css",
+        "status": 200,
+        "bytes": 29716
+      },
+      {
+        "type": "img",
+        "url": "https://buildup-message.github.io/dodam-mindcare/logo.png",
+        "status": 200,
+        "bytes": 522098
+      },
+      {
+        "type": "img",
+        "url": "https://buildup-message.github.io/dodam-mindcare/",
+        "status": 200,
+        "bytes": 55716
+      }
+    ],
+    "photos": [],
+    "counselors": {
+      "최지혜": {
+        "in_html": true,
+        "in_js": false
+      },
+      "손선재": {
+        "in_html": true,
+        "in_js": false
+      },
+      "황을호": {
+        "in_html": true,
+        "in_js": false
+      },
+      "이평순": {
+        "in_html": true,
+        "in_js": false
+      },
+      "최윤정": {
+        "in_html": true,
+        "in_js": false
+      }
+    },
+    "reviews_notice": true,
+    "issues": [],
+    "photos_summary": {
+      "total": 0,
+      "success_200": 0
+    }
+  },
+  "buildup_church": {
+    "url": "https://buildup-message.github.io/buildup-church/",
+    "http_status": 200,
+    "meta_viewport": "width=device-width, initial-scale=1.0",
+    "assets": [
+      {
+        "type": "script",
+        "url": "https://cdn.tailwindcss.com",
+        "status": 200,
+        "bytes": 407279
+      },
+      {
+        "type": "css",
+        "url": "https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css",
+        "status": 404,
+        "bytes": 9379
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/",
+        "status": 200,
+        "bytes": 14520
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/#about",
+        "status": 200,
+        "bytes": 14520
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/#worship",
+        "status": 200,
+        "bytes": 14520
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/#education",
+        "status": 200,
+        "bytes": 14520
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/#community",
+        "status": 200,
+        "bytes": 14520
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/devotions/index.html",
+        "status": 200,
+        "bytes": 6914
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/devotions/index.html",
+        "status": 200,
+        "bytes": 6914
+      },
+      {
+        "type": "link",
+        "url": "https://buildup-message.github.io/buildup-church/devotions/2026-07-19/index.html",
+        "status": 200,
+        "bytes": 39054
+      }
+    ],
+    "address_check": {
+      "geomdan_count": 2,
+      "seogu_count": 0
+    },
+    "devotions_check": {
+      "has_devotion": true
+    },
+    "issues": [
+      "CSS [https://webfontworld.github.io/NexonLv1Gothic/NexonLv1Gothic.css]: HTTP 404"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-push-font-fix",
+ "title": "buildup-church 폰트 수정 커밋 push 실행",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-20T16:34:06+0900",
+ "updated_at": "2026-07-20T16:34:28+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-font-fix/evidence.md git push origin main 900aa1e..194c8fe succeeded",
+  "at": "2026-07-20T16:34:28+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-font-fix/evidence.md",
+    "size": 832,
+    "mtime": 1784532861.892,
+    "sha256_8": "3b7584ea",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

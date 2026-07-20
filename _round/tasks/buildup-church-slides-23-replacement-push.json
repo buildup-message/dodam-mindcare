@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-slides-23-replacement-push",
+ "title": "buildup-church 주간묵상 슬라이드 23장 교체 커밋·push",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T02:20:28+0900",
+ "updated_at": "2026-07-21T02:21:36+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-slides-23-replacement-push/evidence.md commit 98c9f55 pushed to https://github.com/buildup-message/buildup-church/commit/98c9f55",
+  "at": "2026-07-21T02:21:36+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-slides-23-replacement-push/evidence.md",
+    "size": 1887,
+    "mtime": 1784568089.12,
+    "sha256_8": "c455d1fb",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

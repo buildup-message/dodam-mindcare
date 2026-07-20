@@ -1,23 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&family=Pretendard:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-primary: #FAF7F2;      /* Warm Sand Beige */
-  --bg-secondary: #F4EFE6;    /* Slightly Deeper Sand Beige */
+  /* Color Palette - Refined & Vivid Ivory/Sage/Wood System */
+  --bg-primary: #FDFBF7;      /* Bright Warm Ivory */
+  --bg-secondary: #F6F1E9;    /* Rich Sand Ivory */
   --bg-white: #FFFFFF;        /* Pure White */
-  --text-main: #2C2621;       /* Warm Dark Espresso */
-  --text-muted: #6C635C;      /* Soft Charcoal Brown */
-  --color-wood: #826451;       /* Lauan Wood Brown */
-  --color-wood-light: #A58B78; /* Soft Lauan Wood */
-  --color-wood-dark: #5C4637;  /* Deep Lauan Wood */
-  --color-sage: #4A6055;       /* Soft Forest Sage Green */
-  --color-sage-light: #EDF2EF; /* Warm Sage tint */
-  --color-sage-dark: #35473E;  /* Deep Sage */
+  --text-main: #2C2520;       /* Warm Dark Espresso */
+  --text-muted: #5E5650;      /* Soft Charcoal Brown */
+  --color-wood: #7B5E43;       /* Lauan Wood Brown */
+  --color-wood-light: #A38873; /* Soft Lauan Wood */
+  --color-wood-dark: #58412E;  /* Deep Lauan Wood */
+  --color-sage: #3E5A4C;       /* Rich Forest Sage Green */
+  --color-sage-light: #EBF2ED; /* Soft Sage Tint */
+  --color-sage-dark: #2C4237;  /* Deep Sage */
   
   /* Shadow & Transition */
-  --shadow-sm: 0 4px 12px rgba(92, 70, 55, 0.04);
-  --shadow-md: 0 8px 24px rgba(92, 70, 55, 0.08);
-  --shadow-lg: 0 16px 36px rgba(92, 70, 55, 0.12);
+  --shadow-sm: 0 4px 12px rgba(92, 70, 55, 0.05);
+  --shadow-md: 0 10px 30px rgba(62, 90, 76, 0.09);
+  --shadow-lg: 0 18px 40px rgba(62, 90, 76, 0.14);
   --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   --transition-fast: all 0.2s ease;
   
@@ -279,7 +279,7 @@ img {
   padding-top: var(--header-height);
 }
 
-/* Lauan Wood texture simulation */
+/* Hero Section with Warm Atmosphere Photo & Sage Overlay */
 .hero::before {
   content: '';
   position: absolute;
@@ -287,8 +287,10 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(250, 247, 242, 0.9), rgba(250, 247, 242, 0.75)), 
-                    radial-gradient(circle at 80% 20%, rgba(130, 100, 81, 0.05) 0%, transparent 60%);
+  background-image: linear-gradient(rgba(38, 52, 44, 0.75), rgba(62, 90, 76, 0.68)), 
+                    url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1600&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
   z-index: 1;
 }
 
@@ -303,10 +305,11 @@ img {
   font-family: 'Outfit', sans-serif;
   font-size: 1.1rem;
   letter-spacing: 5px;
-  color: var(--color-wood);
+  color: #E2EFE7;
   margin-bottom: 24px;
   text-transform: uppercase;
   display: block;
+  font-weight: 600;
 }
 
 .hero h1 {
@@ -315,14 +318,17 @@ img {
   font-weight: 700;
   margin-bottom: 28px;
   word-break: keep-all;
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .hero-desc {
   font-size: 1.2rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 40px;
   word-break: keep-all;
   font-weight: 300;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 
 .hero-actions {
@@ -488,16 +494,42 @@ img {
 }
 
 .service-img-placeholder {
-  height: 180px;
-  background-color: var(--color-sage-light);
+  height: 200px;
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-sage);
+  color: var(--bg-white);
   position: relative;
+  overflow: hidden;
 }
 
-/* Wooden board frame effect */
+.service-img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(62, 90, 76, 0.55) 0%, rgba(38, 52, 44, 0.8) 100%);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-img-placeholder::before {
+  background: linear-gradient(180deg, rgba(62, 90, 76, 0.4) 0%, rgba(38, 52, 44, 0.65) 100%);
+}
+
+.service-img-placeholder svg {
+  position: relative;
+  z-index: 2;
+  color: #FFFFFF;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.4));
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-img-placeholder svg {
+  transform: scale(1.1);
+}
+
+/* Wooden board frame accent effect */
 .service-img-placeholder::after {
   content: '';
   position: absolute;
@@ -506,6 +538,7 @@ img {
   width: 100%;
   height: 4px;
   background: linear-gradient(90deg, var(--color-wood), var(--color-wood-light));
+  z-index: 3;
 }
 
 .service-info {
@@ -1616,7 +1649,108 @@ img {
   .test-actions {
     width: 100%;
   }
-  
+
+/* Redesign Image Overlay & Atmosphere Card Styles */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.intro-img-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 420px;
+  border: 1px solid rgba(123, 94, 67, 0.15);
+}
+
+.intro-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-img-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(62, 90, 76, 0.45) 100%);
+}
+
+.diff-card-banner {
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+  margin: -40px -32px 24px -32px;
+  overflow: hidden;
+}
+
+.diff-card-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(62, 90, 76, 0.4) 0%, rgba(38, 52, 44, 0.75) 100%);
+}
+
+.diff-card-banner .diff-icon-wrapper {
+  position: absolute;
+  bottom: -20px;
+  left: 24px;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid var(--bg-white);
+}
+
+.approach-section-bg {
+  background-image: linear-gradient(rgba(38, 52, 44, 0.88), rgba(62, 90, 76, 0.85)),
+                    url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=1200&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.program-card-banner {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 8px 8px 0 0;
+  margin: -32px -32px 20px -32px;
+  overflow: hidden;
+}
+
+.program-card-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(62, 90, 76, 0.45) 0%, rgba(38, 52, 44, 0.75) 100%);
+}
+
+.program-card-banner .program-status {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+}
+
+.test-section-bg {
+  background-image: linear-gradient(rgba(253, 251, 247, 0.92), rgba(246, 241, 233, 0.9)),
+                    url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}  
   .review-card {
     padding: 30px 20px;
   }

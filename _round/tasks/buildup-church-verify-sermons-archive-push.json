@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-verify-sermons-archive-push",
+ "title": "신규 주일설교 영상 아카이브 페이지 검증·push",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T04:18:29+0900",
+ "updated_at": "2026-07-21T04:19:17+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-sermons-archive-push/evidence.md commit ce386d7 pushed to https://github.com/buildup-message/buildup-church/commit/ce386d7",
+  "at": "2026-07-21T04:19:17+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-sermons-archive-push/evidence.md",
+    "size": 2596,
+    "mtime": 1784575150.243,
+    "sha256_8": "8cc84e34",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

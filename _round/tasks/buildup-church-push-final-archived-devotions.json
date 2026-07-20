@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-push-final-archived-devotions",
+ "title": "과거 주간묵상 마지막 2주차(07-05, 07-12) git push 실행",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T03:04:14+0900",
+ "updated_at": "2026-07-21T03:05:01+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-final-archived-devotions/evidence.md commits 377a10a and 264e021 pushed to https://github.com/buildup-message/buildup-church/commit/264e021",
+  "at": "2026-07-21T03:05:01+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-final-archived-devotions/evidence.md",
+    "size": 2346,
+    "mtime": 1784570693.996,
+    "sha256_8": "125e8d89",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}

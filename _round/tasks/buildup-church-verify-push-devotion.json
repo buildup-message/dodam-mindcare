@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-verify-push-devotion",
+ "title": "buildup-church 주간묵상(2026-07-19) 콘텐츠 교체분 검증·push",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T00:46:23+0900",
+ "updated_at": "2026-07-21T00:47:26+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-push-devotion/evidence.md commit 26c7187 pushed to https://github.com/buildup-message/buildup-church/commit/26c7187",
+  "at": "2026-07-21T00:47:26+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-verify-push-devotion/evidence.md",
+    "size": 2857,
+    "mtime": 1784562443.551,
+    "sha256_8": "1136376f",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}
