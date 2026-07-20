@@ -385,21 +385,6 @@ img {
   margin: 0 auto;
 }
 
-.intro-text-big {
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.8rem;
-  line-height: 1.8;
-  color: var(--text-main);
-  word-break: keep-all;
-  margin-bottom: 24px;
-  font-weight: 400;
-}
-
-.intro-highlight {
-  color: var(--color-wood);
-  font-weight: 600;
-}
-
 .intro-desc {
   font-size: 1.1rem;
   color: var(--text-muted);
@@ -676,6 +661,85 @@ img {
   color: var(--color-wood);
   position: absolute;
   left: 0;
+}
+
+.profile-intro-more {
+  display: block;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.profile-toggle {
+  margin-top: 20px;
+  border-top: 1px solid rgba(130, 100, 81, 0.15);
+  padding-top: 16px;
+}
+
+.profile-toggle summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-sage);
+}
+
+.profile-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.profile-toggle summary::before {
+  content: '▸ ';
+}
+
+.profile-toggle[open] summary::before {
+  content: '▾ ';
+}
+
+.profile-toggle-body {
+  margin-top: 16px;
+}
+
+.profile-field-group {
+  margin-bottom: 16px;
+}
+
+.profile-field-group h5 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-wood);
+  margin-bottom: 6px;
+}
+
+.profile-field-group ul {
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.profile-field-group li {
+  margin-bottom: 6px;
+  position: relative;
+  padding-left: 14px;
+}
+
+.profile-field-group li::before {
+  content: '•';
+  color: var(--color-wood-light);
+  position: absolute;
+  left: 0;
+}
+
+.profile-philosophy {
+  margin: 16px 0 0;
+  padding: 16px 20px;
+  background-color: var(--bg-primary);
+  border-left: 3px solid var(--color-wood);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-main);
 }
 
 /* Counseling Approach */
@@ -1520,10 +1584,6 @@ img {
   
   .hero-desc {
     font-size: 1rem;
-  }
-  
-  .intro-text-big {
-    font-size: 1.4rem;
   }
   
   .profile-card,
