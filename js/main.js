@@ -205,14 +205,36 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Photo Data Map (All 43 Photos supplied by the user)
   // Mapping categories: lobby (대기실/서가), room (상담/치료실), sand (모래놀이), seminar (세미나실)
+  //
+  // NOTE: the real KakaoTalk export filenames do NOT share one timestamp per block —
+  // each burst of a few photos has its own timestamp. These two maps record the actual
+  // timestamp suffix for every existing file (verified against the restored 사진/ folder);
+  // block 1 has no "019" (KakaoTalk never exported that number), so it is skipped below.
+  const block1Timestamps = {
+    1: '47', 2: '47', 3: '47', 4: '47', 5: '47',
+    6: '48', 7: '48', 8: '48', 9: '48',
+    10: '49', 11: '49', 12: '49', 13: '49', 14: '49', 15: '49',
+    16: '50', 17: '50', 18: '50',
+    20: '51', 21: '51', 22: '51', 23: '51',
+    24: '52', 25: '52'
+  };
+  const block2Timestamps = {
+    1: '06', 2: '06', 3: '06',
+    4: '07', 5: '07', 6: '07',
+    7: '08', 8: '08', 9: '08', 10: '08', 11: '08',
+    12: '09', 13: '09', 14: '09', 15: '09', 16: '09',
+    17: '10', 18: '10', 19: '10'
+  };
+
   const photos = [];
-  
-  // Fill first block (001 ~ 025)
+
+  // Fill first block (001 ~ 025, no 019)
   for (let i = 1; i <= 25; i++) {
+    if (i === 19) continue; // this file does not exist in the export
     const num = String(i).padStart(3, '0');
     let cat = 'room'; // default
     let caption = `상담실 내부 공간`;
-    
+
     if (i === 1 || i === 2 || i === 8 || i === 12 || i === 14) {
       cat = 'lobby';
       caption = '대기실 전경 및 라왕나무 데스크';
@@ -232,20 +254,20 @@ document.addEventListener('DOMContentLoaded', () => {
       cat = 'room';
       caption = '아늑한 개인 상담 치료실';
     }
-    
+
     photos.push({
-      src: `./사진/KakaoTalk_Photo_2026-06-11-00-15-47 ${num}.jpeg`,
+      src: `./사진/KakaoTalk_Photo_2026-06-11-00-15-${block1Timestamps[i]} ${num}.jpeg`,
       cat: cat,
       title: caption
     });
   }
-  
+
   // Fill second block (001 ~ 019)
   for (let i = 1; i <= 19; i++) {
     const num = String(i).padStart(3, '0');
     let cat = 'room';
     let caption = `아늑한 상담 공간`;
-    
+
     if (i === 1 || i === 5 || i === 9 || i === 14) {
       cat = 'lobby';
       caption = '대기실 및 따뜻한 인테리어 디테일';
@@ -262,9 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
       cat = 'room';
       caption = '아늑하고 정온한 상담치료실';
     }
-    
+
     photos.push({
-      src: `./사진/KakaoTalk_Photo_2026-06-11-00-16-06 ${num}.jpeg`,
+      src: `./사진/KakaoTalk_Photo_2026-06-11-00-16-${block2Timestamps[i]} ${num}.jpeg`,
       cat: cat,
       title: caption
     });
