@@ -1,0 +1,27 @@
+{
+ "id": "buildup-church-push-realstory-removal",
+ "title": "주간묵상 6개 주차 실화이야기 섹션 완전 제거 git push 실행",
+ "status": "done",
+ "why": "",
+ "goal": "",
+ "blocked_by": [],
+ "origin_kind": "manual",
+ "origin_fingerprint": "default",
+ "owner": null,
+ "created_at": "2026-07-21T18:25:51+0900",
+ "updated_at": "2026-07-21T18:26:26+0900",
+ "evidence": {
+  "type": "evidence",
+  "text": "probe:artifact /Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-realstory-removal/evidence.md commit 6fd6d9c pushed to https://github.com/buildup-message/buildup-church/commit/6fd6d9c",
+  "at": "2026-07-21T18:26:26+0900",
+  "artifacts": [
+   {
+    "path": "/Users/build-upchurch/websites/dodam-mindcare/_round/evidence/buildup-church-push-realstory-removal/evidence.md",
+    "size": 1204,
+    "mtime": 1784625977.014,
+    "sha256_8": "b53ff2c8",
+    "anchor": "created_at-fallback"
+   }
+  ]
+ }
+}
