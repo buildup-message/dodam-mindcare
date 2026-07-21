@@ -217,6 +217,12 @@ img {
   height: 100%;
 }
 
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .logo {
   font-family: 'Noto Serif KR', serif;
   font-size: 1.4rem;
