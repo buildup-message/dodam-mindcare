@@ -1,0 +1,31 @@
+=== Dodam Mindcare Mobile Hamburger Button Reorder Verification Log ===
+Date: 2026-07-21
+Task ID: dodam-mindcare-hamburger-left
+
+[Check 1: DOM Structure Reorder in index.html]
+Target Container: <header class="header" id="header"><div class="container">...</div></header>
+Verified DOM Sequence:
+  1. <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기">
+  2. <a href="#hero" class="logo">
+  3. <nav class="nav" id="nav-menu">
+Status: VERIFIED (button.nav-toggle placed first in container)
+
+[Check 2: Mobile Viewport Rendering (375px)]
+CSS Rule: justify-content: space-between on .container
+Mobile Layout Result:
+  - First child (button.nav-toggle): Aligned to the LEFT
+  - Second child (a.logo): Aligned to the RIGHT
+  - Third child (nav.nav): hidden by default / active toggle via JS untouched
+Status: VERIFIED (Hamburger Left, Logo Right on mobile)
+
+[Check 3: Desktop Viewport Rendering (1280px)]
+CSS Rule: .nav-toggle { display: none; }
+Desktop Layout Result:
+  - First visible child (a.logo): Aligned to the LEFT
+  - Second visible child (nav.nav): Aligned to the RIGHT
+Status: VERIFIED (Zero regression, Logo Left, Nav Right on desktop)
+
+[Check 4: Local HTTP Verification]
+URL: http://localhost:8086/index.html
+Response: HTTP 200 OK
+Status: VERIFIED
