@@ -7,7 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const navMenu = document.getElementById('nav-menu');
   const navToggle = document.getElementById('nav-toggle');
   const navLinks = document.querySelectorAll('.nav-link');
-  
+  const navGroups = document.querySelectorAll('.nav-group');
+
+  function closeNavGroups() {
+    navGroups.forEach(g => {
+      g.classList.remove('open');
+      g.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded', 'false');
+    });
+  }
+
   // Header shrinkage on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -17,37 +25,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     highlightNavLink();
   });
-  
+
   // Toggle mobile menu
   if (navToggle) {
     navToggle.addEventListener('click', () => {
       navMenu.classList.toggle('active');
       navToggle.classList.toggle('active');
+      closeNavGroups();
     });
   }
-  
+
   // Close mobile menu when a link is clicked
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('active');
       navToggle.classList.remove('active');
+      closeNavGroups();
     });
   });
-  
+
+  // 센터소개 / 상담안내 dropdown groups
+  navGroups.forEach(group => {
+    const toggle = group.querySelector('.nav-group-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = group.classList.contains('open');
+      closeNavGroups();
+      if (!isOpen) {
+        group.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-group')) closeNavGroups();
+  });
+
   // Highlight navigation link corresponding to current section
   const sections = document.querySelectorAll('section[id]');
   function highlightNavLink() {
     let scrollY = window.pageYOffset;
-    
+
     sections.forEach(current => {
       const sectionHeight = current.offsetHeight;
       const sectionTop = current.offsetTop - 100;
       const sectionId = current.getAttribute('id');
-      
+      const link = document.querySelector(`.nav a[href*=${sectionId}]`);
+      const groupToggle = link?.closest('.nav-group')?.querySelector('.nav-group-toggle');
+
       if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        document.querySelector(`.nav a[href*=${sectionId}]`)?.classList.add('active');
+        link?.classList.add('active');
+        groupToggle?.classList.add('active');
       } else {
-        document.querySelector(`.nav a[href*=${sectionId}]`)?.classList.remove('active');
+        link?.classList.remove('active');
+        groupToggle?.classList.remove('active');
       }
     });
   }
