@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>독서를 통한 마음성장 프로그램 | 도담마인드케어</title>
+  <meta name="description" content="글을 읽어도 뜻을 이해하지 못하는 아이들, 문제는 지능이 아니라 마음이 닫혀 있기 때문입니다">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .story-hero {
+      padding-top: calc(var(--header-height) + 60px);
+      padding-bottom: 40px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .story-meta {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .story-hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.9rem;
+      line-height: 1.5;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    .story-hero-img {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 10px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .story-hero-img img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .story-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 20px 24px 100px;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      line-height: 1.95;
+    }
+    .story-body h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      margin: 40px 0 16px;
+      color: var(--color-sage-dark);
+    }
+    .story-body p {
+      margin-bottom: 22px;
+    }
+    .story-body ul {
+      margin: 0 0 22px 20px;
+    }
+    .story-body li {
+      margin-bottom: 10px;
+    }
+    .story-body p.quote {
+      font-family: 'Noto Serif KR', serif;
+      font-style: italic;
+      color: var(--color-wood-dark);
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--color-wood);
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+    .story-checklist {
+      background: var(--color-sage-light);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .story-checklist li {
+      list-style: none;
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .story-checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-sage-dark);
+      font-weight: 700;
+    }
+    .story-cta {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px 24px;
+      background: var(--bg-secondary);
+      border-radius: 14px;
+    }
+    .story-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-wood);
+      background: var(--bg-secondary);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .story-back {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="brand-group">
+        <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="../../index.html#hero" class="logo">
+          <img src="../../logo.png" alt="도담마인드케어 로고" style="height: 38px; width: auto; object-fit: contain; border-radius: 4px;">
+          도담마인드케어
+        </a>
+      </div>
+      <nav class="nav" id="nav-menu">
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            센터소개
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../../index.html#intro" class="nav-link nav-dropdown-link">센터소개</a>
+            <a href="../../index.html#difference" class="nav-link nav-dropdown-link">도담의 차별점</a>
+            <a href="../../index.html#approach" class="nav-link nav-dropdown-link">상담 접근 방식</a>
+            <a href="../../index.html#team" class="nav-link nav-dropdown-link">상담진 소개</a>
+            <a href="../../index.html#gallery" class="nav-link nav-dropdown-link">공간 소개</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            상담안내
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../../index.html#services" class="nav-link nav-dropdown-link">상담 영역</a>
+            <a href="../../index.html#program" class="nav-link nav-dropdown-link">프로그램 · 강좌 · 독서모임</a>
+          </div>
+        </div>
+        <a href="../../index.html#test" class="nav-link">심리검사</a>
+        <a href="../../learning-coaching/index.html" class="nav-link">도담러닝코칭센터</a>
+        <a href="../../index.html#reviews" class="nav-link">상담후기</a>
+        <a href="../../index.html#contact" class="nav-link">예약 & 오시는길</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="story-hero">
+      <div class="story-meta">
+        <span>도담샘</span> · <span>사회성 · 슬로우리딩</span>
+      </div>
+      <h1>독서를 통한 마음성장 프로그램</h1>
+    </div>
+
+    <div class="story-hero-img">
+      <img src="cover.jpg" alt="안네의 일기 책 표지">
+    </div>
+
+    <article class="story-body">
+
+      <p>"책도 많이 읽어주고 학원도 보내는데, 글의 뜻을 제대로 이해하지 못하는 것 같아요. 자꾸 엉뚱한 소리를 하거나 '그래서 하고 싶은 말이 뭔데?' 하고 되물어요." 한글은 다 읽는데 문장이 담은 진짜 의미는 파악하지 못하는 아이들, 책을 읽는 행위는 하지만 머릿속에서 생각이 일어나지 않는 아이들에 대한 이야기입니다.</p>
+
+      <h2>머리가 아니라 마음이 닫혀있다는 신호</h2>
+
+      <p>많은 부모님들이 아이의 문해력 부족을 지능이나 학습 능력의 문제로 보십니다. 하지만 현장에서 만나는 대부분의 아이들은, 머리가 나빠서가 아니라 마음이 닫혀있기 때문에 글을 이해하지 못하는 경우가 훨씬 많습니다.</p>
+
+      <ul>
+        <li><strong>정서적 어려움</strong> — 친구 관계의 불안감, 낮은 자존감 등 다른 걱정거리로 마음이 가득 차 있으면, 뇌는 새로운 정보를 처리할 에너지를 내지 못합니다.</li>
+        <li><strong>경험의 부족</strong> — 책 속 인물의 감정을 현실에서 느껴보거나 공감받아 본 경험이 부족하면, 글은 그저 생명력 없는 활자일 뿐입니다.</li>
+        <li><strong>생각하는 습관의 부재</strong> — 정답을 빨리 찾아야 한다는 압박과 즉각적인 자극에 익숙해진 뇌는 '생각하는 귀찮음'을 견디지 못합니다.</li>
+      </ul>
+
+      <p>결국 아이의 문해력을 여는 열쇠는 더 많은 문제집이 아니라, 닫힌 마음을 먼저 열어주는 것에 있습니다.</p>
+
+      <h2>책이라는 가장 안전한 거울</h2>
+
+      <p>책 속 주인공의 실수를 보며 "나만 그런 게 아니구나" 위로받고, 갈등을 따라가며 "나라면 어떻게 했을까" 상상하고, 친구의 다른 생각을 들으며 존중과 소통을 배웁니다. 이 모든 과정이 나와 너, 우리를 이해하는 사회성 발달의 핵심입니다. 문해력과 사고력은 이 관계와 정서의 토양 위에서 자라나는 나무와 같습니다.</p>
+
+      <h2>&lt;도담 마음성장 리딩&gt;의 세 단계</h2>
+
+      <ul>
+        <li><strong>진단</strong> — 아이의 독서 반응을 통해 현재 마음 상태와 사고 패턴, 관계 맺는 방식을 진단합니다.</li>
+        <li><strong>맞춤 개입</strong> — 진단 결과를 바탕으로 그룹 안에서 최적의 질문과 지지를 제공합니다.</li>
+        <li><strong>성장 보고</strong> — 정기적인 마음성장 보고서로, 아이의 내면이 어떻게 단단해지는지 부모님과 공유합니다.</li>
+      </ul>
+
+      <p>AI 시대, 지식은 얼마든지 검색할 수 있지만 스스로 생각하는 힘과 타인의 마음에 공감하는 능력은 검색으로 얻을 수 없습니다. &lt;도담 마음성장 리딩&gt;은 아이가 지식의 소비자가 아니라, 스스로의 삶을 이끌어가는 생각의 생산자로 성장하도록 돕는 여정입니다.</p>
+
+      <div class="story-cta">
+        <p style="margin-bottom: 4px; font-weight: 600;">&lt;도담 마음성장 리딩&gt; 그룹 모집 · 초등 3학년~중등 3학년</p>
+        <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem;">문의 010-3915-0569 · 초기 상담 후 그룹 배정</p>
+      </div>
+
+    </article>
+
+    <a href="../../index.html" class="story-back btn btn-secondary">홈으로 돌아가기</a>
+    <div style="height: 60px;"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dodam Mindcare. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
+      const navMenu = document.getElementById('nav-menu');
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navGroups = document.querySelectorAll('.nav-group');
+
+      function closeNavGroups() {
+        navGroups.forEach(g => {
+          g.classList.remove('open');
+          g.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          navToggle.classList.toggle('active');
+          closeNavGroups();
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          navToggle.classList.remove('active');
+          closeNavGroups();
+        });
+      });
+
+      navGroups.forEach(group => {
+        const toggle = group.querySelector('.nav-group-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = group.classList.contains('open');
+          closeNavGroups();
+          if (!isOpen) {
+            group.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-group')) closeNavGroups();
+      });
+    });
+  </script>
+</body>
+</html>

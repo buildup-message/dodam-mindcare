@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>불안이 심해서 아무것도 할 수 없었는데... | 도담마인드케어</title>
+  <meta name="description" content="원인 모를 불안감으로 일상이 무너졌던 분들, 그리고 다시 일상을 되찾아간 이야기">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .story-hero {
+      padding-top: calc(var(--header-height) + 60px);
+      padding-bottom: 40px;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .story-meta {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+    }
+    .story-hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.9rem;
+      line-height: 1.5;
+      font-weight: 700;
+      text-wrap: balance;
+    }
+    .story-hero-img {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto 10px;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .story-hero-img img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+    .story-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 20px 24px 100px;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      line-height: 1.95;
+    }
+    .story-body h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 1.3rem;
+      margin: 40px 0 16px;
+      color: var(--color-sage-dark);
+    }
+    .story-body p {
+      margin-bottom: 22px;
+    }
+    .story-body ul {
+      margin: 0 0 22px 20px;
+    }
+    .story-body li {
+      margin-bottom: 10px;
+    }
+    .story-body p.quote {
+      font-family: 'Noto Serif KR', serif;
+      font-style: italic;
+      color: var(--color-wood-dark);
+      background: var(--bg-secondary);
+      border-left: 3px solid var(--color-wood);
+      padding: 16px 20px;
+      border-radius: 6px;
+      margin: 28px 0;
+    }
+    .story-checklist {
+      background: var(--color-sage-light);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+    .story-checklist li {
+      list-style: none;
+      margin-bottom: 10px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .story-checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--color-sage-dark);
+      font-weight: 700;
+    }
+    .story-cta {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px 24px;
+      background: var(--bg-secondary);
+      border-radius: 14px;
+    }
+    .story-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-wood);
+      background: var(--bg-secondary);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+    .story-back {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="brand-group">
+        <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="../../index.html#hero" class="logo">
+          <img src="../../logo.png" alt="도담마인드케어 로고" style="height: 38px; width: auto; object-fit: contain; border-radius: 4px;">
+          도담마인드케어
+        </a>
+      </div>
+      <nav class="nav" id="nav-menu">
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            센터소개
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../../index.html#intro" class="nav-link nav-dropdown-link">센터소개</a>
+            <a href="../../index.html#difference" class="nav-link nav-dropdown-link">도담의 차별점</a>
+            <a href="../../index.html#approach" class="nav-link nav-dropdown-link">상담 접근 방식</a>
+            <a href="../../index.html#team" class="nav-link nav-dropdown-link">상담진 소개</a>
+            <a href="../../index.html#gallery" class="nav-link nav-dropdown-link">공간 소개</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            상담안내
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../../index.html#services" class="nav-link nav-dropdown-link">상담 영역</a>
+            <a href="../../index.html#program" class="nav-link nav-dropdown-link">프로그램 · 강좌 · 독서모임</a>
+          </div>
+        </div>
+        <a href="../../index.html#test" class="nav-link">심리검사</a>
+        <a href="../../learning-coaching/index.html" class="nav-link">도담러닝코칭센터</a>
+        <a href="../../index.html#reviews" class="nav-link">상담후기</a>
+        <a href="../../index.html#contact" class="nav-link">예약 & 오시는길</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="story-hero">
+      <div class="story-meta">
+        <span>도담샘</span> · <span>원장 에세이</span>
+      </div>
+      <h1>불안이 심해서 아무것도 할 수 없었는데...</h1>
+    </div>
+
+    <div class="story-hero-img">
+      <img src="cover.jpg" alt="따뜻한 조명이 있는 편안한 공간">
+    </div>
+
+    <article class="story-body">
+
+      <p>누구나 불안을 느낍니다. 하지만 최근 상담센터에는 원인을 알 수 없는 불안감이 조절되지 않아 찾아오시는 분들이 점점 늘고 있습니다.</p>
+
+      <p>불안 자체는 자연스러운 감정입니다. 문제는 그 불안이 너무 커져서, 예전에는 아무렇지 않게 하던 일들 — 학교에 가는 것, 대중교통을 타는 것, 일이나 공부를 하는 것 — 이 어려워질 때입니다. 심한 경우에는 잠을 자는 것도, 밥을 먹는 것도, 사람을 만나는 것조차 힘들어집니다.</p>
+
+      <h2>다시 일상으로 돌아간 분들</h2>
+
+      <p>집중이 안 되고 공부를 할 수 없어 "이러다 낙오자가 되는 게 아닐까" 힘들어하시던 분이 있었습니다. 상담을 통해 불안을 조금씩 다스리게 되면서 다시 공부에 집중할 수 있게 되었고, 결국 유학까지 가게 되었습니다.</p>
+
+      <p>지하철을 탈 수 없을 만큼 불안이 심해 학교에 가는 것조차 버거워하시던 분도 있었습니다. 대학교를 졸업하지 못할까 봐 걱정하셨지만, 무사히 졸업하고 취업까지 하셨습니다. 지금은 대학원 진학을 준비하며 직장 생활을 이어가고 있다는 소식을 전해오셨습니다.</p>
+
+      <h2>불안은 의지의 문제가 아닙니다</h2>
+
+      <p>불안은 참는다고, 시간이 지난다고 저절로 사라지지 않습니다. 나의 의지력이 부족해서 생기는 문제도 아닙니다.</p>
+
+      <p>불안을 풀어가려면 그 마음을 이야기할 수 있는, 믿을 수 있는 사람이 필요합니다. 혼자 끙끙 앓다가 더 커진 불안을 꺼내어 위로와 공감을 받고, 그 원인을 함께 찾아가는 과정이 필요합니다. 그렇게 조금씩, 불안에 휘둘리지 않고 나의 일상을 살아갈 수 있는 상태로 나아갈 수 있습니다.</p>
+
+      <p>더 이상 스스로의 삶을 통제하며 참아내기만 하는 것이 아니라, 자유롭게 살아가고 싶은 삶을 꿈꾸고 살아낼 수 있도록 도담마인드케어가 함께하겠습니다.</p>
+
+      <div class="story-cta">
+        <p style="margin-bottom: 4px; font-weight: 600;">상담은 예약제로 진행됩니다.</p>
+        <p style="margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem;">문의 010-3915-0569</p>
+      </div>
+
+    </article>
+
+    <a href="../../index.html" class="story-back btn btn-secondary">홈으로 돌아가기</a>
+    <div style="height: 60px;"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dodam Mindcare. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
+      const navMenu = document.getElementById('nav-menu');
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navGroups = document.querySelectorAll('.nav-group');
+
+      function closeNavGroups() {
+        navGroups.forEach(g => {
+          g.classList.remove('open');
+          g.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          navToggle.classList.toggle('active');
+          closeNavGroups();
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          navToggle.classList.remove('active');
+          closeNavGroups();
+        });
+      });
+
+      navGroups.forEach(group => {
+        const toggle = group.querySelector('.nav-group-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = group.classList.contains('open');
+          closeNavGroups();
+          if (!isOpen) {
+            group.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-group')) closeNavGroups();
+      });
+    });
+  </script>
+</body>
+</html>

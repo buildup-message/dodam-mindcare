@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>센터 이야기 | 도담마인드케어</title>
+  <meta name="description" content="도담마인드케어 원장 에세이, 성인·아동청소년 상담 이야기, 사회성·슬로우리딩 프로그램 소식">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .stories-hero {
+      padding-top: calc(var(--header-height) + 60px);
+      padding-bottom: 40px;
+      text-align: center;
+    }
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .story-card {
+      background: var(--bg-white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .story-card-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .story-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-card-body {
+      padding: 20px 22px 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .story-card-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--color-sage-dark);
+      background: var(--color-sage-light);
+      padding: 4px 12px;
+      border-radius: 999px;
+      display: inline-block;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+    .story-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.5;
+      margin-bottom: 8px;
+      flex-grow: 1;
+    }
+    .story-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container">
+      <div class="brand-group">
+        <button class="nav-toggle" id="nav-toggle" aria-label="메뉴 열기">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <a href="../index.html#hero" class="logo">
+          <img src="../logo.png" alt="도담마인드케어 로고" style="height: 38px; width: auto; object-fit: contain; border-radius: 4px;">
+          도담마인드케어
+        </a>
+      </div>
+      <nav class="nav" id="nav-menu">
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            센터소개
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../index.html#intro" class="nav-link nav-dropdown-link">센터소개</a>
+            <a href="../index.html#difference" class="nav-link nav-dropdown-link">도담의 차별점</a>
+            <a href="../index.html#approach" class="nav-link nav-dropdown-link">상담 접근 방식</a>
+            <a href="../index.html#team" class="nav-link nav-dropdown-link">상담진 소개</a>
+            <a href="../index.html#gallery" class="nav-link nav-dropdown-link">공간 소개</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false" aria-haspopup="true">
+            상담안내
+            <svg class="nav-caret" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="../index.html#services" class="nav-link nav-dropdown-link">상담 영역</a>
+            <a href="../index.html#program" class="nav-link nav-dropdown-link">프로그램 · 강좌 · 독서모임</a>
+          </div>
+        </div>
+        <a href="../index.html#test" class="nav-link">심리검사</a>
+        <a href="../learning-coaching/index.html" class="nav-link">도담러닝코칭센터</a>
+        <a href="index.html" class="nav-link active">센터 이야기</a>
+        <a href="../index.html#reviews" class="nav-link">상담후기</a>
+        <a href="../index.html#contact" class="nav-link">예약 & 오시는길</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="stories-hero">
+        <span class="section-subtitle">Dodam Stories</span>
+        <h2 class="section-title">센터 이야기</h2>
+        <p class="intro-desc" style="margin-top: 20px; max-width: 600px; margin-left:auto; margin-right:auto;">
+          도담마인드케어가 상담실 안팎에서 나누고 싶은 이야기들을 전합니다.
+        </p>
+      </div>
+
+      <div class="gallery-filter">
+        <button class="filter-btn active" data-filter="all">전체</button>
+        <button class="filter-btn" data-filter="essay">원장 에세이</button>
+        <button class="filter-btn" data-filter="adult">성인상담 이야기</button>
+        <button class="filter-btn" data-filter="child">아동·청소년 상담 이야기</button>
+        <button class="filter-btn" data-filter="social">사회성 · 슬로우리딩</button>
+      </div>
+
+      <div class="stories-grid" id="stories-grid">
+
+        <a href="little-forest-burnout/index.html" class="story-card" data-category="essay">
+          <div class="story-card-img"><img src="little-forest-burnout/forest-path.jpg" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">원장 에세이</span>
+            <h3 class="story-card-title">심리상담을 하는 저도, 번아웃이 올 때마다 '리틀 포레스트'를 꺼내 봅니다</h3>
+            <p class="story-card-desc">10년 넘게 심리상담을 해온 원장이 번아웃을 다스리는 자신만의 방법</p>
+          </div>
+        </a>
+
+        <a href="anxiety-essay/index.html" class="story-card" data-category="essay">
+          <div class="story-card-img"><img src="anxiety-essay/cover.jpg" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">원장 에세이</span>
+            <h3 class="story-card-title">불안이 심해서 아무것도 할 수 없었는데...</h3>
+            <p class="story-card-desc">원인 모를 불안감으로 일상이 무너졌던 분들이 다시 일상을 되찾은 이야기</p>
+          </div>
+        </a>
+
+        <a href="adult-repeat-pattern/index.html" class="story-card" data-category="adult">
+          <div class="story-card-img"><img src="adult-repeat-pattern/cover.png" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">성인상담 이야기</span>
+            <h3 class="story-card-title">왜 나는 매번 같은 방식으로 상처받을까</h3>
+            <p class="story-card-desc">정신역동 심리상담이 무엇인지, 반복되는 관계 패턴은 왜 생기는지</p>
+          </div>
+        </a>
+
+        <a href="hsp-sensitivity/index.html" class="story-card" data-category="adult">
+          <div class="story-card-img"><img src="hsp-sensitivity/cover.jpg" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">성인상담 이야기</span>
+            <h3 class="story-card-title">남들보다 예민해서 힘들다면? HSP 성향과 대처법</h3>
+            <p class="story-card-desc">매우 민감한 사람(HSP)이란 무엇인지, 예민함을 다루는 세 가지 방법</p>
+          </div>
+        </a>
+
+        <a href="teen-son-ignore-mom/index.html" class="story-card" data-category="child">
+          <div class="story-card-img"><img src="teen-son-ignore-mom/cover.png" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">아동·청소년 상담 이야기</span>
+            <h3 class="story-card-title">사춘기 아들, 엄마만 무시하는 이유가 있습니다</h3>
+            <p class="story-card-desc">엄마에게만 반항하는 사춘기 아들의 심리적 이유와 실전 대처법</p>
+          </div>
+        </a>
+
+        <a href="child-iq-game/index.html" class="story-card" data-category="child">
+          <div class="story-card-img"><img src="child-iq-game/cover.jpg" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">아동·청소년 상담 이야기</span>
+            <h3 class="story-card-title">지능(IQ)은 높은데, 왜 우리 아이는 책 대신 게임만 할까요?</h3>
+            <p class="story-card-desc">아이가 책 대신 게임을 선택하는 뇌과학적 이유와 해법</p>
+          </div>
+        </a>
+
+        <a href="social-slowreading-adhd/index.html" class="story-card" data-category="social">
+          <div class="story-card-img"><img src="social-slowreading-adhd/cover.png" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">사회성 · 슬로우리딩</span>
+            <h3 class="story-card-title">ADHD 아이, 산만한 아이를 위해 시작된 슬로우리딩 사회성 수업</h3>
+            <p class="story-card-desc">3년간 연구해 온 슬로우리딩 사회성 그룹수업 이야기</p>
+          </div>
+        </a>
+
+        <a href="slowreading-program/index.html" class="story-card" data-category="social">
+          <div class="story-card-img"><img src="slowreading-program/cover.jpg" alt=""></div>
+          <div class="story-card-body">
+            <span class="story-card-tag">사회성 · 슬로우리딩</span>
+            <h3 class="story-card-title">독서를 통한 마음성장 프로그램</h3>
+            <p class="story-card-desc">글을 읽어도 뜻을 이해하지 못하는 아이들, 마음이 닫혀있다는 신호</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    <div style="height: 80px;"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Dodam Mindcare. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('header');
+      const navMenu = document.getElementById('nav-menu');
+      const navToggle = document.getElementById('nav-toggle');
+      const navLinks = document.querySelectorAll('.nav-link');
+      const navGroups = document.querySelectorAll('.nav-group');
+
+      function closeNavGroups() {
+        navGroups.forEach(g => {
+          g.classList.remove('open');
+          g.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      if (navToggle) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          navToggle.classList.toggle('active');
+          closeNavGroups();
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('active');
+          navToggle.classList.remove('active');
+          closeNavGroups();
+        });
+      });
+
+      navGroups.forEach(group => {
+        const toggle = group.querySelector('.nav-group-toggle');
+        if (!toggle) return;
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = group.classList.contains('open');
+          closeNavGroups();
+          if (!isOpen) {
+            group.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-group')) closeNavGroups();
+      });
+
+      // Filter
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.story-card');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            const match = filter === 'all' || card.getAttribute('data-category') === filter;
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
