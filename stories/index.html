@@ -34,11 +34,15 @@
     .story-card-img {
       aspect-ratio: 4/3;
       overflow: hidden;
+      background: var(--bg-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .story-card-img img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
     .story-card-body {
       padding: 20px 22px 24px;
