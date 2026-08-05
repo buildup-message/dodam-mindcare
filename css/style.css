@@ -184,6 +184,17 @@ img {
   box-shadow: 0 4px 12px rgba(74, 96, 85, 0.2);
 }
 
+.btn-kakao {
+  background-color: #FEE500;
+  color: #3C1E1E;
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.35);
+}
+
+.btn-kakao:hover {
+  background-color: #F5D900;
+  transform: translateY(-2px);
+}
+
 .btn-sage:hover {
   background-color: var(--color-sage-dark);
   transform: translateY(-2px);
