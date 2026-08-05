@@ -140,6 +140,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ==========================================================================
+     3-1. FAQ Accordion
+     ========================================================================== */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    if (!question || !answer) return;
+
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item.active').forEach(openItem => {
+        if (openItem !== item) {
+          openItem.classList.remove('active');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          openItem.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+
+      if (isActive) {
+        item.classList.remove('active');
+        question.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = null;
+      } else {
+        item.classList.add('active');
+        question.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+
+  /* ==========================================================================
      4. Testimonials (Reviews) Carousel Slider
      ========================================================================== */
   const reviewsSlider = document.getElementById('reviews-slider');
