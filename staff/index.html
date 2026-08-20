@@ -63,10 +63,27 @@
       </section>
 
       <section id="view-clients" hidden>
+        <button id="new-client-btn">새 내담자</button>
+        <dialog id="new-client-dialog">
+          <form id="new-client-form" method="dialog">
+            <label>이름 <input type="text" id="new-client-name" required></label>
+            <label>연락처 <input type="text" id="new-client-phone"></label>
+            <label>나이대
+              <select id="new-client-age">
+                <option>아동청소년</option><option>성인</option>
+              </select>
+            </label>
+            <label><input type="checkbox" id="new-client-voucher"> 바우처 대상</label>
+            <p id="new-client-error" class="error"></p>
+            <button type="submit">저장</button>
+            <button type="button" onclick="document.getElementById('new-client-dialog').close()">취소</button>
+          </form>
+        </dialog>
         <ul id="client-list"></ul>
       </section>
       <dialog id="client-detail-dialog">
         <h3 id="client-detail-name"></h3>
+        <p id="client-detail-phone" style="font-size: 0.9em; color: #555; margin-top: -10px;"></p>
         <button id="open-payment-btn" type="button">결제 기록</button>
         <ul id="client-notes-list"></ul>
         <form id="client-note-form" method="dialog">
