@@ -41,3 +41,22 @@ async function renderWeeklySchedule(anchorDate) {
     container.appendChild(block);
   });
 }
+
+document.getElementById('new-booking-btn').addEventListener('click', async function () {
+  await populateBookingSelects();
+  document.getElementById('booking-form').onsubmit = function (e) {
+    e.preventDefault();
+    submitBooking({
+      roomId: document.getElementById('booking-room').value,
+      counselorId: document.getElementById('booking-counselor').value,
+      counselorName: document.getElementById('booking-counselor').selectedOptions[0].textContent,
+      targetId: '', targetName: document.getElementById('booking-target-name').value,
+      sessionType: document.getElementById('booking-type').value,
+      date: document.getElementById('booking-date').value,
+      startTime: document.getElementById('booking-start').value,
+      endTime: document.getElementById('booking-end').value,
+      recurrence: document.getElementById('booking-recurrence').value || null
+    });
+  };
+  document.getElementById('booking-dialog').showModal();
+});

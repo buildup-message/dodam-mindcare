@@ -18,6 +18,31 @@
     </nav>
     <main>
       <section id="view-schedule">
+        <button id="new-booking-btn">새 예약</button>
+        <dialog id="booking-dialog">
+          <form id="booking-form" method="dialog">
+            <label>방 <select id="booking-room"></select></label>
+            <label>상담사 <select id="booking-counselor"></select></label>
+            <label>날짜 <input type="date" id="booking-date"></label>
+            <label>시작시간 <input type="time" id="booking-start"></label>
+            <label>종료시간 <input type="time" id="booking-end"></label>
+            <label>유형
+              <select id="booking-type">
+                <option>초기상담</option><option>일반상담</option><option>부모상담</option>
+                <option>모래놀이</option><option>놀이치료</option><option>사회성그룹</option><option>독서그룹</option>
+              </select>
+            </label>
+            <label>내담자/그룹 이름 <input type="text" id="booking-target-name"></label>
+            <label>반복
+              <select id="booking-recurrence">
+                <option value="">없음</option><option value="WEEKLY">매주</option><option value="BIWEEKLY">격주</option>
+              </select>
+            </label>
+            <p id="booking-error" class="error"></p>
+            <button type="submit">저장</button>
+            <button type="button" onclick="document.getElementById('booking-dialog').close()">취소</button>
+          </form>
+        </dialog>
         <div id="schedule-grid"></div>
       </section>
     </main>
@@ -27,6 +52,7 @@
   <script src="js/auth.js"></script>
   <script src="js/api.js"></script>
   <script src="js/schedule.js"></script>
+  <script src="js/booking.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
   <script>
     initGoogleLogin(async function () {
