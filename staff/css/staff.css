@@ -1,0 +1,6 @@
+body { font-family: sans-serif; margin: 0; padding: 1rem; }
+#app-shell[hidden], #login-screen[hidden] { display: none; }
+.room-block { border: 1px solid #ddd; border-radius: 8px; padding: 0.75rem; margin-bottom: 0.75rem; }
+.room-block ul { list-style: none; padding: 0; margin: 0; }
+.room-block li { padding: 0.25rem 0; border-bottom: 1px solid #f0f0f0; }
+.error { color: #c0392b; }
