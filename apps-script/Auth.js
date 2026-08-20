@@ -23,5 +23,8 @@ function verifyIdToken_(idToken) {
 
 function isWhitelisted_(email) {
   var rows = readRows_('AllowedUsers');
-  return rows.some(function (r) { return String(r['이메일']).toLowerCase() === String(email).toLowerCase(); });
+  var target = String(email).trim().toLowerCase();
+  return rows.some(function (r) {
+    return String(r['이메일']).trim().toLowerCase() === target;
+  });
 }

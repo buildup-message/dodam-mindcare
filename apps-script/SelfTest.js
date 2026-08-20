@@ -17,6 +17,7 @@ function selfTest_Auth_() {
   if (!allowed.length) throw new Error('AllowedUsers 탭이 비어있음 — Task 0 Step 3 확인 필요');
   var knownEmail = allowed[0]['이메일'];
   if (!isWhitelisted_(knownEmail)) throw new Error('등록된 이메일인데 화이트리스트 통과 실패');
+  if (!isWhitelisted_('  ' + knownEmail.toUpperCase() + '  ')) throw new Error('공백 및 대소문자 무시 실패');
   if (isWhitelisted_('__not_allowed__@example.com')) throw new Error('미등록 이메일이 통과됨');
   Logger.log('selfTest_Auth_ PASS');
 }
