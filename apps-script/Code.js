@@ -31,6 +31,10 @@ function dispatch_(action, body, email) {
     case 'createSession': return createSession_(body, email);
     case 'updateSession': return updateSession_(body, email);
     case 'cancelSession': return cancelSession_(body.sessionId, email);
+    case 'listClients': return listClients_();
+    case 'createClient': return createClient_(body);
+    case 'addClientNote': return addClientNote_(body, email);
+    case 'listClientNotes': return listClientNotes_(body.clientId);
     default:
       throw new Error('알 수 없는 action: ' + action);
   }

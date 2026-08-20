@@ -69,7 +69,7 @@ function selfTest_Sessions_() {
 }
 
 function runAllSelfTests() {
-  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_'];
+  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_'];
   var failed = [];
   tests.forEach(function (name) {
     try {
@@ -83,4 +83,16 @@ function runAllSelfTests() {
     throw new Error(failed.length + '개 self-test 실패');
   }
   Logger.log('모든 self-test 통과 (' + tests.length + '개)');
+}
+
+function selfTest_ClientNotes_() {
+  var client = createClient_({ name: '__SELFTEST__', phone: '000', ageGroup: '성인', isVoucher: false });
+  addClientNote_({ clientId: client.id, content: '첫 메모' }, 'a@example.com');
+  addClientNote_({ clientId: client.id, content: '둘째 메모' }, 'b@example.com');
+  var notes = listClientNotes_(client.id);
+  if (notes.length !== 2) throw new Error('메모 2건이 누적되지 않음(개수=' + notes.length + ')');
+  if (notes[0]['내용'] !== '둘째 메모') throw new Error('최신순 정렬 안 됨');
+  notes.forEach(function (n) { deleteRow_('ClientNotes', n.id); });
+  deleteRow_('Clients', client.id);
+  Logger.log('selfTest_ClientNotes_ PASS');
 }
