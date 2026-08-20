@@ -16,6 +16,7 @@
     <nav>
       <button data-view="schedule">주간 일정</button>
       <button data-view="clients">내담자</button>
+      <button data-view="payment-requests">결제요청</button>
       <button data-view="reconcile">정합성점검</button>
       <div id="user-info"></div>
       <button id="logout-btn">로그아웃</button>
@@ -105,6 +106,16 @@
         <button id="run-reconcile-btn">지금 점검하기</button>
         <ul id="reconcile-list"></ul>
       </section>
+
+      <section id="view-payment-requests" hidden>
+        <form id="new-payment-request-form">
+          <input type="text" id="pr-client-id" placeholder="내담자ID" required>
+          <input type="number" id="pr-amount" placeholder="금액" required>
+          <input type="text" id="pr-reason" placeholder="사유(예: 다음 회기분)">
+          <button type="submit">결제요청 등록</button>
+        </form>
+        <ul id="payment-request-list"></ul>
+      </section>
     </main>
   </div>
 
@@ -115,6 +126,7 @@
   <script src="js/booking.js"></script>
   <script src="js/clients.js"></script>
   <script src="js/payments.js"></script>
+  <script src="js/payment-requests.js"></script>
   <script src="js/reconcile.js"></script>
   <script src="js/router.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>

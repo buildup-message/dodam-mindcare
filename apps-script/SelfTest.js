@@ -69,7 +69,7 @@ function selfTest_Sessions_() {
 }
 
 function runAllSelfTests() {
-  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_', 'selfTest_Payments_'];
+  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_', 'selfTest_Payments_', 'selfTest_PaymentRequests_'];
   var failed = [];
   tests.forEach(function (name) {
     try {
@@ -122,4 +122,26 @@ function selfTest_Payments_() {
   listPayments_(client.id).forEach(function (p) { deleteRow_('Payments', p.id); });
   deleteRow_('Clients', client.id);
   Logger.log('selfTest_Payments_ PASS');
+}
+
+function selfTest_PaymentRequests_() {
+  var client = createClient_({ name: '__SELFTEST__', phone: '000', ageGroup: '아동청소년', isVoucher: false });
+  var req = createPaymentRequest_({ clientId: client.id, amount: 50000, reason: '다음 회기분' }, 'a@example.com');
+  if (req['상태'] !== '대기') throw new Error('초기 상태가 대기가 아님');
+
+  updatePaymentRequestStatus_({ requestId: req.id, status: '링크발송함' }, 'a@example.com');
+  var afterSend = findRow_('PaymentRequests', req.id);
+  if (afterSend['상태'] !== '링크발송함' || !afterSend['링크발송일']) throw new Error('링크발송 상태 반영 안 됨');
+
+  var beforeCount = listPayments_(client.id).length;
+  updatePaymentRequestStatus_({ requestId: req.id, status: '완료', coverageEndDate: '2099-03-31' }, 'a@example.com');
+  var afterDone = findRow_('PaymentRequests', req.id);
+  if (afterDone['상태'] !== '완료') throw new Error('완료 상태 반영 안 됨');
+  var afterCount = listPayments_(client.id).length;
+  if (afterCount !== beforeCount + 1) throw new Error('완료 처리 시 Payments 기록이 생성되지 않음');
+
+  listPayments_(client.id).forEach(function (p) { deleteRow_('Payments', p.id); });
+  deleteRow_('PaymentRequests', req.id);
+  deleteRow_('Clients', client.id);
+  Logger.log('selfTest_PaymentRequests_ PASS');
 }

@@ -39,6 +39,9 @@ function dispatch_(action, body, email) {
     case 'recordPayment': return recordPayment_(body, email);
     case 'listPayments': return listPayments_(body.clientId);
     case 'nextDueDate': return { date: nextDueDate_(body.clientId) };
+    case 'createPaymentRequest': return createPaymentRequest_(body, email);
+    case 'updatePaymentRequestStatus': return updatePaymentRequestStatus_(body, email);
+    case 'listPaymentRequests': return listPaymentRequests_();
     default:
       throw new Error('알 수 없는 action: ' + action);
   }
