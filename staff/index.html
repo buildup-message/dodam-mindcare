@@ -16,6 +16,7 @@
     <nav>
       <button data-view="schedule">주간 일정</button>
       <button data-view="clients">내담자</button>
+      <button data-view="reconcile">정합성점검</button>
       <div id="user-info"></div>
       <button id="logout-btn">로그아웃</button>
     </nav>
@@ -72,6 +73,11 @@
         </form>
         <button type="button" onclick="document.getElementById('client-detail-dialog').close()">닫기</button>
       </dialog>
+
+      <section id="view-reconcile" hidden>
+        <button id="run-reconcile-btn">지금 점검하기</button>
+        <ul id="reconcile-list"></ul>
+      </section>
     </main>
   </div>
 
@@ -81,6 +87,7 @@
   <script src="js/schedule.js"></script>
   <script src="js/booking.js"></script>
   <script src="js/clients.js"></script>
+  <script src="js/reconcile.js"></script>
   <script src="js/router.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
   <script>

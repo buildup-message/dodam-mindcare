@@ -35,6 +35,7 @@ function dispatch_(action, body, email) {
     case 'createClient': return createClient_(body);
     case 'addClientNote': return addClientNote_(body, email);
     case 'listClientNotes': return listClientNotes_(body.clientId);
+    case 'reconcileCheck': return reconcileCheck_();
     default:
       throw new Error('알 수 없는 action: ' + action);
   }
