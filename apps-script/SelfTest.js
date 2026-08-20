@@ -69,7 +69,7 @@ function selfTest_Sessions_() {
 }
 
 function runAllSelfTests() {
-  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_'];
+  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_', 'selfTest_Payments_'];
   var failed = [];
   tests.forEach(function (name) {
     try {
@@ -95,4 +95,31 @@ function selfTest_ClientNotes_() {
   notes.forEach(function (n) { deleteRow_('ClientNotes', n.id); });
   deleteRow_('Clients', client.id);
   Logger.log('selfTest_ClientNotes_ PASS');
+}
+
+function selfTest_Payments_() {
+  var client = createClient_({ name: '__SELFTEST__', phone: '000', ageGroup: '아동청소년', isVoucher: true });
+
+  recordPayment_({
+    clientId: client.id, date: '2099-01-01', coverageEndDate: '2099-01-31',
+    amount: 100000, discountAmount: 10000, paymentType: '개인상담', isVoucher: true,
+    selfPayAmount: 30000, subsidyAmount: 60000, method: '카드'
+  }, 'selftest@example.com');
+
+  var mismatchThrown = false;
+  try {
+    recordPayment_({
+      clientId: client.id, date: '2099-02-01', coverageEndDate: '2099-02-15',
+      amount: 100000, discountAmount: 10000, paymentType: '개인상담', isVoucher: true,
+      selfPayAmount: 30000, subsidyAmount: 70000, method: '카드'
+    }, 'selftest@example.com');
+  } catch (err) { mismatchThrown = true; }
+  if (!mismatchThrown) throw new Error('본인부담금+지원금 불일치인데 에러가 안 남');
+
+  var due = nextDueDate_(client.id);
+  if (due !== '2099-01-31') throw new Error('nextDueDate_ 계산 오류: ' + due);
+
+  listPayments_(client.id).forEach(function (p) { deleteRow_('Payments', p.id); });
+  deleteRow_('Clients', client.id);
+  Logger.log('selfTest_Payments_ PASS');
 }

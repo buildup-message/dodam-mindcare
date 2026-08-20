@@ -29,3 +29,9 @@ document.getElementById('client-note-form').addEventListener('submit', async fun
   document.getElementById('client-note-input').value = '';
   openClientDetail(clientId, document.getElementById('client-detail-name').textContent);
 });
+
+document.getElementById('open-payment-btn').addEventListener('click', function () {
+  const clientId = document.getElementById('client-note-form').dataset.clientId;
+  document.getElementById('payment-client-id').value = clientId;
+  document.getElementById('payment-dialog').showModal();
+});

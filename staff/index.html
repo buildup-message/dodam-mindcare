@@ -66,12 +66,39 @@
       </section>
       <dialog id="client-detail-dialog">
         <h3 id="client-detail-name"></h3>
+        <button id="open-payment-btn" type="button">결제 기록</button>
         <ul id="client-notes-list"></ul>
         <form id="client-note-form" method="dialog">
           <textarea id="client-note-input" required></textarea>
           <button type="submit">메모 추가</button>
         </form>
         <button type="button" onclick="document.getElementById('client-detail-dialog').close()">닫기</button>
+      </dialog>
+
+      <dialog id="payment-dialog">
+        <form id="payment-form">
+          <input type="hidden" id="payment-client-id">
+          <label>날짜 <input type="date" id="payment-date" required></label>
+          <label>커버종료일 <input type="date" id="payment-coverage-end" required></label>
+          <label>커버설명(선택) <input type="text" id="payment-coverage-note"></label>
+          <label>금액(정가) <input type="number" id="payment-amount" required></label>
+          <label>할인금액 <input type="number" id="payment-discount" value="0"></label>
+          <p>실수령액: <strong id="payment-net-amount">0 원</strong></p>
+          <label>유형
+            <select id="payment-type"><option>개인상담</option><option>그룹-사회성</option><option>그룹-독서</option></select>
+          </label>
+          <label><input type="checkbox" id="payment-is-voucher"> 바우처 상담</label>
+          <div id="voucher-fields" hidden>
+            <label>본인부담금 <input type="number" id="payment-selfpay"></label>
+            <label>지원금 <input type="number" id="payment-subsidy"></label>
+          </div>
+          <label>결제수단
+            <select id="payment-method"><option>계좌이체</option><option>현금</option><option>카드</option><option>기타</option></select>
+          </label>
+          <p id="payment-error" class="error"></p>
+          <button type="submit">저장</button>
+          <button type="button" onclick="document.getElementById('payment-dialog').close()">취소</button>
+        </form>
       </dialog>
 
       <section id="view-reconcile" hidden>
@@ -87,6 +114,7 @@
   <script src="js/schedule.js"></script>
   <script src="js/booking.js"></script>
   <script src="js/clients.js"></script>
+  <script src="js/payments.js"></script>
   <script src="js/reconcile.js"></script>
   <script src="js/router.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>

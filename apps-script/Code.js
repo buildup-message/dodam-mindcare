@@ -36,6 +36,9 @@ function dispatch_(action, body, email) {
     case 'addClientNote': return addClientNote_(body, email);
     case 'listClientNotes': return listClientNotes_(body.clientId);
     case 'reconcileCheck': return reconcileCheck_();
+    case 'recordPayment': return recordPayment_(body, email);
+    case 'listPayments': return listPayments_(body.clientId);
+    case 'nextDueDate': return { date: nextDueDate_(body.clientId) };
     default:
       throw new Error('알 수 없는 action: ' + action);
   }
