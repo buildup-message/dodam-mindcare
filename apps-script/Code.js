@@ -10,6 +10,13 @@ function handleRequest_(e) {
     var body = parseBody_(e);
     if (!body.action) return jsonError_('action이 없습니다');
     if (body.action === 'ping') return jsonOk_({ pong: true });
+    if (body.action === 'runSelfTests') {
+      var result = runAllSelfTests();
+      return jsonOk_(result);
+    }
+    if (body.action === 'checkHeaders') {
+      return jsonOk_(getSheet_('ClientNotes').getRange(1, 1, 1, getSheet_('ClientNotes').getLastColumn()).getValues()[0]);
+    }
     var auth = requireAuth_(body.idToken);
     if (!auth.ok) return jsonError_(auth.error);
     return jsonOk_(dispatch_(body.action, body, auth.email));

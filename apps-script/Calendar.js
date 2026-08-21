@@ -53,6 +53,17 @@ function resolveEventInstanceId_(calendarId, masterEventId, dateStr) {
 }
 
 function moveCalendarEvent_(calendarId, eventId, newCalendarId) {
-  var event = Calendar.Events.move(calendarId, eventId, newCalendarId);
-  return event.id;
+  var oldEvent = Calendar.Events.get(calendarId, eventId);
+  var newEvent = {
+    summary: oldEvent.summary,
+    description: oldEvent.description,
+    start: oldEvent.start,
+    end: oldEvent.end,
+    recurrence: oldEvent.recurrence
+  };
+  var created = Calendar.Events.insert(newEvent, newCalendarId);
+  try {
+    Calendar.Events.remove(calendarId, eventId);
+  } catch(e) {}
+  return created.id;
 }
