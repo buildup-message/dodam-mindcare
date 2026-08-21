@@ -28,15 +28,20 @@ function updateSession_(body, email) {
   
   var oldRoom = findRow_('Rooms', session['방']);
   var newRoom = findRow_('Rooms', body.roomId);
-  if (!newRoom) throw new Error('새로운 방을 찾을 수 없습니다: ' + body.roomId);
+  Logger.log('updateSession: oldRoom.id=' + oldRoom.id + ', newRoom.id=' + newRoom.id + ', session.방=' + session['방'] + ', body.roomId=' + body.roomId);
 
   var newStartIso = body.date + 'T' + body.startTime + ':00+09:00';
   var newEndIso = body.date + 'T' + body.endTime + ':00+09:00';
   var targetEventId = resolveEventInstanceId_(oldRoom['구글캘린더ID'], session['캘린더이벤트ID'], session['날짜']);
+  Logger.log('updateSession: targetEventId before move=' + targetEventId);
 
   // Move calendar event if room changed
   if (String(session['방']) !== String(body.roomId)) {
+    Logger.log('updateSession: moving from ' + oldRoom['구글캘린더ID'] + ' to ' + newRoom['구글캘린더ID']);
     targetEventId = moveCalendarEvent_(oldRoom['구글캘린더ID'], targetEventId, newRoom['구글캘린더ID']);
+    Logger.log('updateSession: targetEventId after move=' + targetEventId);
+  } else {
+    Logger.log('updateSession: room not changed, skipping move');
   }
 
   if (checkConflict_(newRoom['구글캘린더ID'], newStartIso, newEndIso, targetEventId)) {

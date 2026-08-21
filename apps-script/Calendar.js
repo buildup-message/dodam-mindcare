@@ -53,17 +53,12 @@ function resolveEventInstanceId_(calendarId, masterEventId, dateStr) {
 }
 
 function moveCalendarEvent_(calendarId, eventId, newCalendarId) {
-  var oldEvent = Calendar.Events.get(calendarId, eventId);
-  var newEvent = {
-    summary: oldEvent.summary,
-    description: oldEvent.description,
-    start: oldEvent.start,
-    end: oldEvent.end,
-    recurrence: oldEvent.recurrence
-  };
-  var created = Calendar.Events.insert(newEvent, newCalendarId);
   try {
-    Calendar.Events.remove(calendarId, eventId);
-  } catch(e) {}
-  return created.id;
+    var event = Calendar.Events.move(calendarId, eventId, newCalendarId);
+    Logger.log('Calendar.Events.move result: id=' + event.id + ', status=' + event.status + ', organizer=' + (event.organizer ? event.organizer.email : 'none') + ', original cal=' + calendarId + ', new cal=' + newCalendarId);
+    return event.id;
+  } catch(e) {
+    Logger.log('Calendar.Events.move FAILED: ' + e.message);
+    throw e;
+  }
 }

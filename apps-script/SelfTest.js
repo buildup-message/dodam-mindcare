@@ -120,9 +120,10 @@ function runAllSelfTests() {
   }.bind(this));
   if (failed.length) {
     Logger.log('FAILED:\\n' + failed.join('\\n'));
-    throw new Error(failed.length + '개 self-test 실패: ' + failed.join(', '));
+    throw new Error(failed.length + '개 self-test 실패: ' + failed.join(', ') + '\\n\\nLOGS:\\n' + Logger.getLog());
   }
   Logger.log('모든 self-test 통과 (' + tests.length + '개)');
+  return { ok: true, logs: Logger.getLog() };
 }
 
 function selfTest_ClientNotes_() {
@@ -218,9 +219,36 @@ function selfTest_Sessions_UpdateMove_() {
       sessionType: '일반상담', targetName: '변경된대상'
     }, 'test@example.com');
 
-    // Note: Google Calendar API move/insert is failing silently or returning the old calendar
-    // due to a backend limitation or eventual consistency. We verified the Sheet updates correctly.
-    Utilities.sleep(1000);
+    if (updated['방'] !== room2.id) throw new Error('방이 업데이트되지 않음');
+    if (updated['대상'] !== '변경된대상') throw new Error('대상(targetName)이 변경되지 않음');
+    
+    var ev = null;
+    for (var i = 0; i < 5; i++) {
+      Utilities.sleep(2000);
+      try {
+        ev = Calendar.Events.get(room2['구글캘린더ID'], updated['캘린더이벤트ID']);
+        if (ev.status !== 'cancelled') break;
+      } catch(err) {
+        ev = null;
+      }
+    }
+    if (!ev || ev.status === 'cancelled') {
+      var ev1 = null;
+      try { ev1 = Calendar.Events.get(room1['구글캘린더ID'], updated['캘린더이벤트ID']); } catch(e) {}
+      var msg = '이벤트가 새 캘린더로 이동하지 않았거나 접근 불가 (이벤트ID: ' + updated['캘린더이벤트ID'] + ')';
+      if (ev1) msg += ' [이벤트가 여전히 구 캘린더(' + room1['구글캘린더ID'] + ')에 남아있음! status: ' + ev1.status + ', organizer: ' + (ev1.organizer ? ev1.organizer.email : 'none') + ']';
+      throw new Error(msg);
+    }
+    
+    var oldEv = null;
+    try {
+      oldEv = Calendar.Events.get(room1['구글캘린더ID'], updated['캘린더이벤트ID']);
+      if (oldEv && oldEv.status !== 'cancelled') {
+        throw new Error('이벤트가 구 캘린더에서 지워지지 않음');
+      }
+    } catch(err) {
+      // Not Found is expected and correct
+    }
   } finally {
     if (s && s.id) {
       try { cancelSession_(s.id, 'test@example.com'); } catch(e) {}
