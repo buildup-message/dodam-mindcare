@@ -30,6 +30,7 @@ function appendRow_(tabName, rowObj) {
   if (headers.indexOf('id') !== -1 && !rowObj.id) rowObj.id = Utilities.getUuid();
   var row = headers.map(function (h) { return rowObj[h] !== undefined ? rowObj[h] : ''; });
   sheet.appendRow(row);
+  SpreadsheetApp.flush();
   return rowObj;
 }
 
@@ -44,6 +45,7 @@ function updateRow_(tabName, id, patch) {
       headers.forEach(function (h, c) {
         if (patch[h] !== undefined) sheet.getRange(r + 1, c + 1).setValue(patch[h]);
       });
+      SpreadsheetApp.flush();
       var updated = {};
       headers.forEach(function (h, c) { updated[h] = patch[h] !== undefined ? patch[h] : values[r][c]; });
       return updated;
@@ -60,6 +62,7 @@ function deleteRow_(tabName, id) {
   for (var r = 1; r < values.length; r++) {
     if (String(values[r][idCol]) === String(id)) {
       sheet.deleteRow(r + 1);
+      SpreadsheetApp.flush();
       return true;
     }
   }

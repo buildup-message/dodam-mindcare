@@ -178,7 +178,7 @@ function selfTest_Sessions_UpdateMove_() {
   var newStart = '2099-05-01T12:00:00+09:00';
   var newEnd = '2099-05-01T13:00:00+09:00';
   
-  if (!eventExists_(room2['구글캘린더ID'], s['캘린더이벤트ID'])) throw new Error('이벤트가 새 캘린더로 이동하지 않았거나 접근 불가');
+  if (!eventExists_(room2['구글캘린더ID'], updated['캘린더이벤트ID'])) throw new Error('이벤트가 새 캘린더로 이동하지 않았거나 접근 불가');
   
   cancelSession_(s.id, 'test@example.com');
   deleteRow_('Sessions', s.id);

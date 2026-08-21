@@ -53,7 +53,8 @@ function updateSession_(body, email) {
 
   return updateRow_('Sessions', body.sessionId, {
     날짜: body.date, 시작시간: body.startTime, 종료시간: body.endTime,
-    방: body.roomId, 상담사: body.counselorId, 유형: body.sessionType, 대상: body.targetName || ''
+    방: body.roomId, 상담사: body.counselorId, 유형: body.sessionType, 대상: body.targetName || '',
+    캘린더이벤트ID: targetEventId
   });
 }
 

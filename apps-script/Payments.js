@@ -33,7 +33,12 @@ function listPayments_(clientId) {
 }
 
 function nextDueDate_(clientId) {
-  var dates = listPayments_(clientId).map(function (p) { return p['커버종료일']; }).filter(Boolean);
+  var dates = listPayments_(clientId).map(function (p) {
+    if (p['커버종료일'] instanceof Date) {
+      return Utilities.formatDate(p['커버종료일'], 'Asia/Seoul', 'yyyy-MM-dd');
+    }
+    return String(p['커버종료일']);
+  }).filter(Boolean);
   if (!dates.length) return null;
   return dates.reduce(function (latest, d) { return d > latest ? d : latest; });
 }
