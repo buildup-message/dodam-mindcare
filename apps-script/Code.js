@@ -10,10 +10,6 @@ function handleRequest_(e) {
     var body = parseBody_(e);
     if (!body.action) return jsonError_('action이 없습니다');
     if (body.action === 'ping') return jsonOk_({ pong: true });
-    if (body.action === 'runSelfTests') {
-      var result = runAllSelfTests();
-      return jsonOk_(result);
-    }
     var auth = requireAuth_(body.idToken);
     if (!auth.ok) return jsonError_(auth.error);
     return jsonOk_(dispatch_(body.action, body, auth.email));
