@@ -33,7 +33,7 @@ async function renderWeeklySchedule(anchorDate) {
       .sort(function (a, b) { return (a['날짜'] + a['시작시간']).localeCompare(b['날짜'] + b['시작시간']); })
       .forEach(function (s) {
         const li = document.createElement('li');
-        li.textContent = s['날짜'] + ' ' + s['시작시간'] + '~' + s['종료시간'] + ' ' + s['상담사이름'] + ' (' + s['유형'] + ')';
+        li.textContent = s['날짜'] + ' ' + s['시작시간'] + '~' + s['종료시간'] + ' ' + s['상담사이름'] + ' (' + s['유형'] + ') — ' + (s['대상'] || '');
         li.dataset.sessionId = s.id;
         li.style.cursor = 'pointer';
         li.addEventListener('click', function () { openEditBookingDialog(s); });
@@ -49,7 +49,7 @@ async function openEditBookingDialog(session) {
   
   document.getElementById('booking-room').value = session['방'];
   document.getElementById('booking-counselor').value = session['상담사'];
-  document.getElementById('booking-target-name').value = session['대상자명'] || '';
+  document.getElementById('booking-target-name').value = session['대상'] || '';
   document.getElementById('booking-type').value = session['유형'];
   document.getElementById('booking-date').value = session['날짜'];
   document.getElementById('booking-start').value = session['시작시간'];

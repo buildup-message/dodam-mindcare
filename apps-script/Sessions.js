@@ -17,7 +17,7 @@ function createSession_(body, email) {
 
   return appendRow_('Sessions', {
     캘린더이벤트ID: eventId, 날짜: body.date, 시작시간: body.startTime, 종료시간: body.endTime,
-    상담사: body.counselorId, 방: body.roomId, 유형: body.sessionType, 대상: body.targetId,
+    상담사: body.counselorId, 방: body.roomId, 유형: body.sessionType, 대상: body.targetName || '',
     반복여부: body.recurrence || '없음', 상태: '예정', 등록자: email
   });
 }
@@ -25,21 +25,36 @@ function createSession_(body, email) {
 function updateSession_(body, email) {
   var session = findRow_('Sessions', body.sessionId);
   if (!session) throw new Error('예약을 찾을 수 없습니다: ' + body.sessionId);
-  var room = findRow_('Rooms', session['방']);
+  
+  var oldRoom = findRow_('Rooms', session['방']);
+  var newRoom = findRow_('Rooms', body.roomId);
+  if (!newRoom) throw new Error('새로운 방을 찾을 수 없습니다: ' + body.roomId);
+
   var newStartIso = body.date + 'T' + body.startTime + ':00+09:00';
   var newEndIso = body.date + 'T' + body.endTime + ':00+09:00';
-  var targetEventId = resolveEventInstanceId_(room['구글캘린더ID'], session['캘린더이벤트ID'], session['날짜']);
+  var targetEventId = resolveEventInstanceId_(oldRoom['구글캘린더ID'], session['캘린더이벤트ID'], session['날짜']);
 
-  if (checkConflict_(room['구글캘린더ID'], newStartIso, newEndIso, targetEventId)) {
+  // Move calendar event if room changed
+  if (String(session['방']) !== String(body.roomId)) {
+    targetEventId = moveCalendarEvent_(oldRoom['구글캘린더ID'], targetEventId, newRoom['구글캘린더ID']);
+  }
+
+  if (checkConflict_(newRoom['구글캘린더ID'], newStartIso, newEndIso, targetEventId)) {
     throw new Error('이미 예약된 시간입니다.');
   }
 
-  updateCalendarEvent_(room['구글캘린더ID'], targetEventId, {
+  var title = (body.counselorName || '') + ' - ' + (body.targetName || '') + ' (' + body.sessionType + ')';
+
+  updateCalendarEvent_(newRoom['구글캘린더ID'], targetEventId, {
+    summary: title,
     start: { dateTime: newStartIso, timeZone: 'Asia/Seoul' },
     end: { dateTime: newEndIso, timeZone: 'Asia/Seoul' }
   });
 
-  return updateRow_('Sessions', body.sessionId, { 날짜: body.date, 시작시간: body.startTime, 종료시간: body.endTime });
+  return updateRow_('Sessions', body.sessionId, {
+    날짜: body.date, 시작시간: body.startTime, 종료시간: body.endTime,
+    방: body.roomId, 상담사: body.counselorId, 유형: body.sessionType, 대상: body.targetName || ''
+  });
 }
 
 function cancelSession_(sessionId, email) {

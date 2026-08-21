@@ -69,7 +69,7 @@ function selfTest_Sessions_() {
 }
 
 function runAllSelfTests() {
-  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_', 'selfTest_Payments_', 'selfTest_PaymentRequests_'];
+  var tests = ['selfTest_Sheets_', 'selfTest_Auth_', 'selfTest_Calendar_', 'selfTest_Sessions_', 'selfTest_ClientNotes_', 'selfTest_Payments_', 'selfTest_PaymentRequests_', 'selfTest_Sessions_UpdateMove_'];
   var failed = [];
   tests.forEach(function (name) {
     try {
@@ -144,4 +144,41 @@ function selfTest_PaymentRequests_() {
   deleteRow_('PaymentRequests', req.id);
   deleteRow_('Clients', client.id);
   Logger.log('selfTest_PaymentRequests_ PASS');
+}
+
+function selfTest_Sessions_UpdateMove_() {
+  var room1 = findRow_('Rooms', 'room1');
+  var room2 = findRow_('Rooms', 'room2');
+  if (!room1 || !room2) return; // skip if rooms don't exist
+
+  var counselor = findRow_('Counselors', 'counselor1');
+  if (!counselor) return;
+
+  var s = createSession_({
+    roomId: room1.id, counselorId: counselor.id, counselorName: counselor['이름'],
+    date: '2099-05-01', startTime: '10:00', endTime: '11:00',
+    sessionType: '일반상담', targetName: '테스트대상'
+  }, 'test@example.com');
+  
+  if (s['대상'] !== '테스트대상') throw new Error('대상(targetName)이 저장되지 않음');
+
+  // 방, 시간, 대상 변경
+  var updated = updateSession_({
+    sessionId: s.id, roomId: room2.id, counselorId: counselor.id, counselorName: counselor['이름'],
+    date: '2099-05-01', startTime: '12:00', endTime: '13:00',
+    sessionType: '일반상담', targetName: '변경된대상'
+  }, 'test@example.com');
+
+  if (updated['방'] !== room2.id) throw new Error('방이 업데이트되지 않음');
+  if (updated['대상'] !== '변경된대상') throw new Error('대상(targetName)이 변경되지 않음');
+
+  // 새 방에 이벤트가 존재하는지, 구 방에 없는지 확인 (간접적으로 삭제 확인은 어렵지만, moveCalendarEvent_ 성공여부로 알 수 있음)
+  var newStart = '2099-05-01T12:00:00+09:00';
+  var newEnd = '2099-05-01T13:00:00+09:00';
+  
+  if (!eventExists_(room2['구글캘린더ID'], s['캘린더이벤트ID'])) throw new Error('이벤트가 새 캘린더로 이동하지 않았거나 접근 불가');
+  
+  cancelSession_(s.id, 'test@example.com');
+  deleteRow_('Sessions', s.id);
+  Logger.log('selfTest_Sessions_UpdateMove_ PASS');
 }

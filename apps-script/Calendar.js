@@ -51,3 +51,8 @@ function resolveEventInstanceId_(calendarId, masterEventId, dateStr) {
   }
   return instances.items[0].id;
 }
+
+function moveCalendarEvent_(calendarId, eventId, newCalendarId) {
+  var event = Calendar.Events.move(calendarId, eventId, newCalendarId);
+  return event.id;
+}
