@@ -147,12 +147,14 @@ function selfTest_PaymentRequests_() {
 }
 
 function selfTest_Sessions_UpdateMove_() {
-  var room1 = findRow_('Rooms', 'room1');
-  var room2 = findRow_('Rooms', 'room2');
-  if (!room1 || !room2) return; // skip if rooms don't exist
+  var rooms = readRows_('Rooms');
+  if (rooms.length < 2) return; // skip if less than 2 rooms
+  var room1 = rooms[0];
+  var room2 = rooms[1];
 
-  var counselor = findRow_('Counselors', 'counselor1');
-  if (!counselor) return;
+  var counselors = readRows_('Counselors');
+  if (counselors.length < 1) return;
+  var counselor = counselors[0];
 
   var s = createSession_({
     roomId: room1.id, counselorId: counselor.id, counselorName: counselor['이름'],
@@ -172,7 +174,7 @@ function selfTest_Sessions_UpdateMove_() {
   if (updated['방'] !== room2.id) throw new Error('방이 업데이트되지 않음');
   if (updated['대상'] !== '변경된대상') throw new Error('대상(targetName)이 변경되지 않음');
 
-  // 새 방에 이벤트가 존재하는지, 구 방에 없는지 확인 (간접적으로 삭제 확인은 어렵지만, moveCalendarEvent_ 성공여부로 알 수 있음)
+  // 새 방에 이벤트가 존재하는지, 구 방에 없는지 확인
   var newStart = '2099-05-01T12:00:00+09:00';
   var newEnd = '2099-05-01T13:00:00+09:00';
   
