@@ -74,14 +74,27 @@ function cancelSession_(sessionId, email) {
 
 function listSessionsInRange_(startDate, endDate) {
   var sessions = readRows_('Sessions').filter(function (s) {
-    return s['날짜'] >= startDate && s['날짜'] <= endDate && s['상태'] !== '취소';
+    var d = s['날짜'];
+    if (d instanceof Date) d = Utilities.formatDate(d, 'Asia/Seoul', 'yyyy-MM-dd');
+    return String(d) >= startDate && String(d) <= endDate && s['상태'] !== '취소';
   });
   var rooms = readRows_('Rooms');
   var counselors = readRows_('Counselors');
   return sessions.map(function (s) {
     var room = rooms.filter(function (r) { return String(r.id) === String(s['방']); })[0];
     var counselor = counselors.filter(function (c) { return String(c.id) === String(s['상담사']); })[0];
+    
+    var sDate = s['날짜'];
+    if (sDate instanceof Date) sDate = Utilities.formatDate(sDate, 'Asia/Seoul', 'yyyy-MM-dd');
+    var sStart = s['시작시간'];
+    if (sStart instanceof Date) sStart = Utilities.formatDate(sStart, 'Asia/Seoul', 'HH:mm');
+    var sEnd = s['종료시간'];
+    if (sEnd instanceof Date) sEnd = Utilities.formatDate(sEnd, 'Asia/Seoul', 'HH:mm');
+    
     return Object.assign({}, s, {
+      날짜: sDate,
+      시작시간: sStart,
+      종료시간: sEnd,
       방이름: room ? room['이름'] : '',
       상담사이름: counselor ? counselor['이름'] : ''
     });
