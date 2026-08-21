@@ -17,6 +17,7 @@ async function submitBooking(formData, existingSessionId) {
 async function cancelBooking(sessionId) {
   if (!confirm('이 예약을 취소하시겠습니까?')) return;
   await callApi('cancelSession', { sessionId: sessionId });
+  document.getElementById('booking-dialog').close();
   renderWeeklySchedule(new Date());
 }
 

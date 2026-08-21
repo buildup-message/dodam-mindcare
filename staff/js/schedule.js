@@ -33,8 +33,10 @@ async function renderWeeklySchedule(anchorDate) {
       .sort(function (a, b) { return (a['날짜'] + a['시작시간']).localeCompare(b['날짜'] + b['시작시간']); })
       .forEach(function (s) {
         const li = document.createElement('li');
-        li.textContent = s['날짜'] + ' ' + s['시작시간'] + '~' + s['종료시간'] + ' ' + s['상담사이름'];
+        li.textContent = s['날짜'] + ' ' + s['시작시간'] + '~' + s['종료시간'] + ' ' + s['상담사이름'] + ' (' + s['유형'] + ')';
         li.dataset.sessionId = s.id;
+        li.style.cursor = 'pointer';
+        li.addEventListener('click', function () { openEditBookingDialog(s); });
         list.appendChild(li);
       });
     block.appendChild(list);
@@ -42,8 +44,45 @@ async function renderWeeklySchedule(anchorDate) {
   });
 }
 
+async function openEditBookingDialog(session) {
+  await populateBookingSelects();
+  
+  document.getElementById('booking-room').value = session['방'];
+  document.getElementById('booking-counselor').value = session['상담사'];
+  document.getElementById('booking-target-name').value = session['대상자명'] || '';
+  document.getElementById('booking-type').value = session['유형'];
+  document.getElementById('booking-date').value = session['날짜'];
+  document.getElementById('booking-start').value = session['시작시간'];
+  document.getElementById('booking-end').value = session['종료시간'];
+  document.getElementById('booking-recurrence').value = ''; // 반복 수정은 지원되지 않거나 개별 건으로 취급
+  
+  document.getElementById('booking-delete-btn').style.display = 'inline-block';
+  document.getElementById('booking-delete-btn').onclick = function () {
+    cancelBooking(session.id);
+  };
+  
+  document.getElementById('booking-form').onsubmit = function (e) {
+    e.preventDefault();
+    submitBooking({
+      roomId: document.getElementById('booking-room').value,
+      counselorId: document.getElementById('booking-counselor').value,
+      counselorName: document.getElementById('booking-counselor').selectedOptions[0].textContent,
+      targetId: '', targetName: document.getElementById('booking-target-name').value,
+      sessionType: document.getElementById('booking-type').value,
+      date: document.getElementById('booking-date').value,
+      startTime: document.getElementById('booking-start').value,
+      endTime: document.getElementById('booking-end').value,
+      recurrence: document.getElementById('booking-recurrence').value || null
+    }, session.id);
+  };
+  document.getElementById('booking-dialog').showModal();
+}
+
 document.getElementById('new-booking-btn').addEventListener('click', async function () {
   await populateBookingSelects();
+  document.getElementById('booking-form').reset();
+  document.getElementById('booking-delete-btn').style.display = 'none';
+  
   document.getElementById('booking-form').onsubmit = function (e) {
     e.preventDefault();
     submitBooking({
