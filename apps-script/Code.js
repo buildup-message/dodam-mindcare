@@ -14,29 +14,6 @@ function handleRequest_(e) {
       var result = runAllSelfTests();
       return jsonOk_(result);
     }
-    if (body.action === 'listRooms') {
-      return ContentService.createTextOutput(JSON.stringify(readRows_('Rooms'))).setMimeType(ContentService.MimeType.JSON);
-    }
-    if (body.action === 'listCounselors') {
-      return ContentService.createTextOutput(JSON.stringify(readRows_('Counselors'))).setMimeType(ContentService.MimeType.JSON);
-    }
-    if (body.action === 'fixRooms') {
-      var sheet = getSheet_('Rooms');
-      var values = sheet.getDataRange().getValues();
-      var idCol = values[0].indexOf('id');
-      if (idCol !== -1) {
-        for (var r = 1; r < values.length; r++) {
-          if (!values[r][idCol]) {
-            sheet.getRange(r + 1, idCol + 1).setValue(Utilities.getUuid());
-          }
-        }
-      }
-      SpreadsheetApp.flush();
-      return ContentService.createTextOutput('fixed').setMimeType(ContentService.MimeType.TEXT);
-    }
-    if (body.action === 'checkHeaders') {
-      return jsonOk_(getSheet_('ClientNotes').getRange(1, 1, 1, getSheet_('ClientNotes').getLastColumn()).getValues()[0]);
-    }
     var auth = requireAuth_(body.idToken);
     if (!auth.ok) return jsonError_(auth.error);
     return jsonOk_(dispatch_(body.action, body, auth.email));
