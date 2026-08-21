@@ -155,7 +155,7 @@
   <script src="js/router.js"></script>
   <script src="https://accounts.google.com/gsi/client"></script>
   <script>
-    initGoogleLogin(async function () {
+    async function startApp() {
       try {
         await callApi('ping');
       } catch (err) {
@@ -165,7 +165,15 @@
       document.getElementById('login-screen').hidden = true;
       document.getElementById('app-shell').hidden = false;
       renderWeeklySchedule(new Date());
-    });
+    }
+    
+    window.appStartFn = startApp;
+
+    if (hasValidStoredToken()) {
+      startApp();
+    } else {
+      initGoogleLogin(startApp);
+    }
   </script>
 </body>
 </html>
